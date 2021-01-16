@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+// Hat tip to: https://seesparkbox.com/foundry/sassy_grayscale
+$color-white: #ffffff;
+$color-gray-98: #f3f3f3;
+$color-gray-95: #ededed;
+$color-gray-90: #e3e3e3;
+$color-gray-85: #d9d9d9;
+$color-gray-80: #cccccc;
+$color-gray-75: #c0c0c0;
+$color-gray-70: #b0b0b0;
+$color-gray-60: #999999;
+$color-gray-50: #808080;
+$color-gray-45: #727272;
+$color-gray-40: #696969;
+$color-gray-30: #4d4d4d;
+$color-gray-20: #363636;
+$color-gray-15: #222222;
+$color-gray-10: #171717;
+$color-black: #000000;
+
+
+$color-theme-blue: #233D4D;
+$color-theme-blue-light: #5985A8;
+$color-theme-blue2: #65B4C2;
+$color-theme-green1: #1AE90C;
+$color-theme-green2: #03B909;
+$color-theme-green3: #A6FE08;
+
+$color-bg: $color-gray-90;
+$color-txt: $color-gray-20;
+
+$color-dark: darken($color-theme-blue, 10%);
+//$color-primary: $color-theme-orange;
+//$color-alt: $color-theme-orange;
+
+$color-primary: $color-theme-green2;
+$color-alt: $color-theme-blue2;
