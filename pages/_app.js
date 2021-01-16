@@ -1,6 +1,7 @@
 import { Provider } from 'next-auth/client';
 
-//import '../styles/globals.css';
+import './_app.scss';
+
 
 function Hanky({ Component, pageProps }) {
     return (

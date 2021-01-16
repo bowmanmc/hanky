@@ -19,20 +19,8 @@ $color-gray-15: #222222;
 $color-gray-10: #171717;
 $color-black: #000000;
 
+$color-background: rgb(246, 245, 235);
+$color-text: rgb(30, 31, 32);
 
-$color-theme-blue: #233D4D;
-$color-theme-blue-light: #5985A8;
-$color-theme-blue2: #65B4C2;
-$color-theme-green1: #1AE90C;
-$color-theme-green2: #03B909;
-$color-theme-green3: #A6FE08;
-
-$color-bg: $color-gray-90;
-$color-txt: $color-gray-20;
-
-$color-dark: darken($color-theme-blue, 10%);
-//$color-primary: $color-theme-orange;
-//$color-alt: $color-theme-orange;
-
-$color-primary: $color-theme-green2;
-$color-alt: $color-theme-blue2;
+$color-navbar-background: $color-text;
+$color-navbar-text: $color-background;
