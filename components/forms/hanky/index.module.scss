@@ -1,0 +1,13 @@
+@import 'sass/colors';
+
+.HankyForm {
+    padding: 1.0em;
+
+    textarea {
+        background-color: transparent;
+        border: 1px solid $color-gray-70;
+        resize: none;
+        overflow: auto;
+        width: 100%;
+    }
+}
