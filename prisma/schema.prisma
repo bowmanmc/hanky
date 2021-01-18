@@ -9,9 +9,12 @@ datasource db {
 
 model hanky {
   id          Int       @id @default(autoincrement())
+  author      String
   content     String
   created     DateTime  @default(now())
   updated     DateTime  @updatedAt
+
+  @@index([author])
 }
 
 model user {
