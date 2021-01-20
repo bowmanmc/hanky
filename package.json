@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@prisma/client": "^2.12.1",
+    "dayjs": "^1.10.3",
     "next": "^9.4.4",
     "next-auth": "^3.1.0",
     "react": "^16.14.0",

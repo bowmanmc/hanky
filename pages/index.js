@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { signIn, useSession } from 'next-auth/client';
 
-import HankyForm from 'components/forms/hanky';
+import Feed from 'components/feed';
+import HankyForm from 'components/forms/add';
 import Navbar from 'components/navbar';
 
 const refreshData = async () => {
@@ -40,13 +41,7 @@ const HomePage = (props) => {
                 });
             }}/>
 
-            {
-                feed.map(item => {
-                    return (
-                        <div key={item.id}>{item.content}</div>
-                    );
-                })
-            }
+            <Feed feed={feed} />
         </div>
     );
 };

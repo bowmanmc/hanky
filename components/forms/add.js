@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import styles from './index.module.scss';
+import styles from './add.module.scss';
 
 
 const HankyForm = props => {

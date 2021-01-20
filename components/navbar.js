@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/client';
 
-import styles from './index.module.scss';
+import styles from './navbar.module.scss';
 
 const Navbar = props => {
     const [session, loading] = useSession();
