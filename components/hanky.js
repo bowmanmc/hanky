@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import { getGradient, getPattern } from 'lib/backgrounds';
 
 import styles from './hanky.module.scss';
 
@@ -8,10 +7,10 @@ const Hanky = ({hanky}) => {
     const day = dayjs(hanky.created).format('dddd, MMMM D, YYYY');
 
     const gradient = {
-        background: getGradient(),
+        background: hanky.gradient,
     };
     const image = {
-        backgroundImage: `url(${getPattern()})`,
+        backgroundImage: `url(/images/backgrounds/${hanky.pattern})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     };
