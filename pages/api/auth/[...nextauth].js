@@ -1,7 +1,6 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
-import updateUser from 'lib/updateUser';
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
@@ -18,7 +17,7 @@ const options = {
     // The secret should be set to a reasonably long random string.
     // It is used to sign cookies and to sign and encrypt JSON Web Tokens, unless
     // a seperate secret is defined explicitly for encrypting the JWT.
-    secret: process.env.SECRET,
+    secret: process.env.NEXTAUTH_SIGNING_SECRET,
 
     session: {
         // Use JSON Web Tokens for session instead of database sessions.
@@ -35,7 +34,7 @@ const options = {
     // https://next-auth.js.org/configuration/options#jwt
     jwt: {
         // A secret to use for key generation (you should set this explicitly)
-        secret: '6hVWhOLAus9RoGRFoTDN6Bf1FMgiJSHpf8IvdIyeMcoG2asdfAgF'
+        secret: process.env.NEXTAUTH_JWT_SECRET,
         // Set to true to use encryption (default: false)
         // encryption: true,
         // You can define your own encode/decode functions for signing and encryption
@@ -61,7 +60,7 @@ const options = {
     // https://next-auth.js.org/configuration/callbacks
     callbacks: {
         // signIn: async (user, account, profile) => { return Promise.resolve(true) },
-        signIn: updateUser,
+        // signIn: updateUser,
         // redirect: async (url, baseUrl) => { return Promise.resolve(baseUrl) },
         // session: async (session, user) => { return Promise.resolve(session) },
         // jwt: async (token, user, account, profile, isNewUser) => { return Promise.resolve(token) }

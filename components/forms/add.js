@@ -17,16 +17,9 @@ const HankyForm = props => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
             });
-            const data = await res.json();
-            if (!data?.id) {
-                // error
-                console.log('Error: ' + JSON.stringify(data));
-            }
-            else {
-                //await router.push('/');
-                onAdd();
-                setHankyText('');
-            }
+            await res.json();
+            onAdd();
+            setHankyText('');
         } catch (error) {
             console.error(error);
         }

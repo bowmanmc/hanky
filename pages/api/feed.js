@@ -1,6 +1,7 @@
-import { getSession } from 'next-auth/client'
+import { getSession } from 'next-auth/client';
 
-import prisma from 'lib/prisma';
+import DataUtils from 'lib/datautils';
+import db from 'lib/db';
 
 
 // GET /api/hankies
@@ -10,11 +11,14 @@ export default async function handle(request, response) {
     });
     if (session) {
         const author = session.user.email;
-        const results = await prisma.hanky.findMany({
-            where: { author: author },
-            orderBy: [{ created: 'desc' }, { id: 'desc' }],
+        const params = DataUtils.queryParams(author);
+        await db.query(params).then(results => {
+            response.json(results.Items || []);
+        }).catch(error => {
+            console.log('ERROR: listing feed with params: ' + JSON.stringify(params));
+            console.error(error);
+            response.json(error);
         });
-        response.json(results);
     }
     else {
         response.json({

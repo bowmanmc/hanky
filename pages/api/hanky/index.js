@@ -1,8 +1,8 @@
 import { getSession } from 'next-auth/client'
 
-import prisma from 'lib/prisma';
+import db from 'lib/db';
+import DataUtils from 'lib/datautils';
 import processEntry from 'lib/processEntry';
-
 
 // POST /api/hanky
 export default async function handle(request, response) {
@@ -13,13 +13,14 @@ export default async function handle(request, response) {
         const author = session.user.email;
         const { content } = request.body;
         const data = processEntry(content);
-        const result = await prisma.hanky.create({
-            data: {
-                author: author,
-                content: data.entry,
-            },
+        const params = DataUtils.entryParams(author, data);
+        await db.put(params).then(result => {
+            response.json(result);
+        }).catch(error => {
+            console.log('ERROR: saving entry ' + JSON.stringify(params));
+            console.error(error);
+            response.json(error);
         });
-        response.json(result);
     }
     else {
         response.json({
@@ -27,3 +28,4 @@ export default async function handle(request, response) {
         });
     }
 };
+

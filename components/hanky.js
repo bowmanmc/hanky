@@ -20,7 +20,7 @@ const Hanky = ({hanky}) => {
         <div className={styles.Hanky} style={gradient}>
             <div className={styles.Hanky__content} style={image}>
                 <div className={styles.Hanky__text}>
-                    {hanky.content}
+                    {hanky.entry}
                 </div>
             </div>
             <div className={styles.Hanky__info}>
