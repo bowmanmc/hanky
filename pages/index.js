@@ -3,9 +3,7 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { signIn, useSession } from 'next-auth/client';
 
-import Feed from 'components/feed';
-import HankyForm from 'components/forms/add';
-import Navbar from 'components/navbar';
+import Header from 'components/header';
 
 const refreshData = async () => {
     const response = await fetch('/api/feed');
@@ -34,14 +32,8 @@ const HomePage = (props) => {
                 <title>Hanky - Gratitude</title>
             </Head>
 
-            <Navbar />
-            <HankyForm onAdd={() => {
-                refreshData().then(items => {
-                    setFeed(items);
-                });
-            }}/>
+            <h1>home page</h1>
 
-            <Feed feed={feed} />
         </div>
     );
 };

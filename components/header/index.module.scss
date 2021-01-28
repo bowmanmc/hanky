@@ -1,0 +1,61 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+.Header {
+    padding: 1.5em 0.5em;
+
+    &__greeting {
+        @include fontsize($fontsize-xl);
+        display: block;
+        font-weight: $fontweight-bold;
+    }
+
+    &__compliment {
+        @include fontsize($fontsize-normal);
+        display: block;
+    }
+
+    $button-size: 52px;
+    &__navbutton {
+        align-items: center;
+        background: $Pastel-3;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        box-shadow: 2.5px 2.5px 0 darken($BlueRaspberry-1, 5%);
+        color: $BlueRaspberry-1;
+        display: flex;
+        justify-content: center;
+        margin-right: 0.75em;
+        width: $button-size;
+        height: $button-size;
+
+        svg {
+            fill: $BlueRaspberry-1;
+            height: $button-size * 0.5;
+            width: $button-size * 0.5;
+        }
+
+        a {
+            align-items: center;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    nav {
+        margin: 2.5em 0;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            display: flex;
+        }
+    }
+}

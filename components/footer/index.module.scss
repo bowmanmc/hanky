@@ -1,0 +1,13 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+.Footer {
+    background-color: $color-footer-bg;
+    background: linear-gradient(to bottom right, $color-white, $color-footer-bg);
+    //background-image: url(/images/backgrounds/circles-01.png);
+    //background-repeat: 'no-repeat';
+    //background-size: 'cover';
+    //color: $color-header-txt;
+    padding: 1.5em 0.5em;
+
+}
