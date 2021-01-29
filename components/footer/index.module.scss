@@ -2,8 +2,8 @@
 @import 'sass/typography';
 
 .Footer {
-    background-color: $color-footer-bg;
-    background: linear-gradient(to bottom right, $color-white, $color-footer-bg);
+    background-color: $color-page-background;
+    background: linear-gradient(to bottom, $color-page-background, $color-white);
     //background-image: url(/images/backgrounds/circles-01.png);
     //background-repeat: 'no-repeat';
     //background-size: 'cover';

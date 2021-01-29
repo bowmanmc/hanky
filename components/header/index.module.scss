@@ -18,7 +18,7 @@
     $button-size: 52px;
     &__navbutton {
         align-items: center;
-        background: $Pastel-3;
+        //background: $Pastel-3;
         border: 1px solid $color-white;
         border-radius: 50%;
         box-shadow: 2.5px 2.5px 0 darken($BlueRaspberry-1, 5%);
@@ -44,6 +44,22 @@
         }
     }
 
+    &__navbutton:nth-child(1n) {
+        background: #ACFFDF;
+    }
+    &__navbutton:nth-child(2n) {
+        background: #A3FFAF;
+    }
+    &__navbutton:nth-child(3n) {
+        background: #C3FF9B;
+    }
+    &__navbutton:nth-child(4n) {
+        background: #F9FF9B;
+    }
+    &__navbutton:nth-child(5n) {
+        background: #FFF09C;
+    }
+
     nav {
         margin: 2.5em 0;
     }
@@ -51,6 +67,7 @@
     ul {
         display: flex;
         flex-direction: row;
+        justify-content: center;
         list-style: none;
         padding-left: 0;
 

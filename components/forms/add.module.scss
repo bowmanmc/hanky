@@ -1,13 +1,34 @@
 @import 'sass/colors';
+@import 'sass/typography';
 
-.HankyForm {
+.Form {
+
     padding: 1.0em;
+
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.5em 0;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 
     textarea {
         background-color: transparent;
         border: 1px solid $color-gray-70;
+        flex: 1;
+        font-family: $fontstack-body;
+        margin-top: 1.0em;
+        padding: 0.5em;
         resize: none;
         overflow: auto;
-        width: 100%;
+    }
+
+    button {
+        @include fontsize($fontsize-normal);
+
     }
 }

@@ -6,7 +6,7 @@ import Header from 'components/header';
 import './_app.scss';
 
 
-function Hanky({ Component, pageProps }) {
+function Thanky({ Component, pageProps }) {
     return (
         <Provider session={pageProps.session}>
             <Header />
@@ -16,4 +16,4 @@ function Hanky({ Component, pageProps }) {
     );
 }
 
-export default Hanky;
+export default Thanky;

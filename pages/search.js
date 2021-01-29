@@ -23,3 +23,19 @@ const SearchPage = (props) => {
     );
 };
 export default SearchPage;
+
+/*
+const refreshData = async () => {
+    const response = await fetch('/api/feed');
+    const items = await response.json();
+    return items;
+};
+
+    const [feed, setFeed] = useState([]);
+
+    useEffect(() => {
+        refreshData().then(items => {
+            setFeed(items)
+        });
+    }, []);
+*/

@@ -4,16 +4,16 @@ import db from 'lib/db';
 import DataUtils from 'lib/datautils';
 import processEntry from 'lib/processEntry';
 
-// POST /api/hanky
+// POST /api/entry
 export default async function handle(request, response) {
     const session = await getSession({
         req: request
     });
     if (session) {
         const author = session.user.email;
-        const { content } = request.body;
-        const data = processEntry(content);
-        const params = DataUtils.entryParams(author, data);
+        const { content, localtime } = request.body;
+        const entry = processEntry(content);
+        const params = DataUtils.entryParams(author, entry, localtime);
         await db.put(params).then(result => {
             response.json(result);
         }).catch(error => {

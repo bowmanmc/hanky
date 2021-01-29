@@ -28,7 +28,7 @@ $Pastel-3: #FFDB8D;
 $Pastel-4: #74E1D2;
 $Pastel-5: #263F4C;
 
-$Hidden-Places-2: #D99AAB;
+$Hidden-Places-1: #D99AAB;
 $Hidden-Places-2: #DFE4F2;
 $Hidden-Places-3: #0D688C;
 $Hidden-Places-4: #0889A6;
@@ -40,8 +40,9 @@ $BlueRaspberry-2: #00b4db;
 $color-background: $BlueRaspberry-1;
 $color-text: $color-light;
 
-// Header
-
+// Page
+$color-page-background: $color-light;
+$color-page-text: $color-dark;
 
 // Footer
 $color-footer-bg: $color-light;
