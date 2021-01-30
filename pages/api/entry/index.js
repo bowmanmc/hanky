@@ -15,7 +15,7 @@ export default async function handle(request, response) {
         const entry = processEntry(content);
         const params = DataUtils.entryParams(author, entry, localtime);
         await db.put(params).then(result => {
-            response.json(result);
+            response.json(params);
         }).catch(error => {
             console.log('ERROR: saving entry ' + JSON.stringify(params));
             console.error(error);

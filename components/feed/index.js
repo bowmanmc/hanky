@@ -1,6 +1,6 @@
-import Hanky from './hanky';
+import Item from './item';
 
-import styles from './feed.module.scss';
+import styles from './index.module.scss';
 
 
 const Feed = props => {
@@ -11,7 +11,7 @@ const Feed = props => {
             {
                 feed.map(item => {
                     return (
-                        <Hanky key={item.id} hanky={item} />
+                        <Item key={item.id} item={item} />
                     );
                 })
             }

@@ -3,8 +3,6 @@
 
 .Form {
 
-    padding: 1.0em;
-
     &__buttons {
         display: flex;
         justify-content: flex-end;
@@ -17,8 +15,11 @@
     }
 
     textarea {
+        @include fontsize($fontsize-normal);
+
         background-color: transparent;
         border: 1px solid $color-gray-70;
+        color: $color-page-text;
         flex: 1;
         font-family: $fontstack-body;
         margin-top: 1.0em;

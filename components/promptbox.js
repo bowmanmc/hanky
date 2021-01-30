@@ -26,7 +26,7 @@ const PromptBox = () => {
             </p>
             <div className={styles.PromptBox__buttons}>
                 <button onClick={refreshPrompt}>
-                    <BsArrowClockwise />
+                    <BsArrowClockwise /> New Prompt
                 </button>
             </div>
         </div>

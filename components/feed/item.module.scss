@@ -1,0 +1,27 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+.Item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.0em;
+
+    &__marker {
+        border-radius: 0.25em;
+        display: flex;
+        width: 24px;
+
+        div {
+            flex: 1;
+        }
+    }
+
+    &__entry {
+        flex: 1;
+        padding-left: 0.5em;
+
+        p {
+            margin-top: 0;
+        }
+    }
+}
