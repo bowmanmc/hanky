@@ -11,6 +11,13 @@ const Item = ({item}) => {
         background: item.gradient,
     };
 
+    const dateTxt = {
+        background: item.gradient,
+        backgroundClip: 'text',
+        webkitBackgroundClip: 'text',
+        color: 'transparent',
+    };
+
     const image = {
         backgroundImage: `url(/images/backgrounds/${item.pattern})`,
         backgroundRepeat: 'no-repeat',
@@ -18,13 +25,10 @@ const Item = ({item}) => {
     };
 
     return (
-        <div className={styles.Item}>
-            <div className={styles.Item__marker} style={gradient}>
-                <div style={image} />
-            </div>
+        <div className={styles.Item} style={gradient}>
             <div className={styles.Item__entry}>
+                <span className={styles.Item__date} style={dateTxt}>{day}</span>
                 <p className={styles.Item__text}>{item.entry}</p>
-                <p className={styles.Item__date}>{day}</p>
             </div>
         </div>
     );
