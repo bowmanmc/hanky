@@ -11,17 +11,17 @@ export default async function handle(request, response) {
     });
     if (session) {
         const author = session.user.email;
-        const params = DataUtils.queryParams(author);
+        const params = DataUtils.feedParams(author);
         await db.query(params).then(results => {
             response.json(results.Items || []);
         }).catch(error => {
             console.log('ERROR: listing feed with params: ' + JSON.stringify(params));
             console.error(error);
-            response.json(error);
+            response.status(500).json({error: 'An error occurred while loading feed from the database.'});
         });
     }
     else {
-        response.json({
+        response.status(401).json({
             error: 'Not authorized.'
         });
     }
