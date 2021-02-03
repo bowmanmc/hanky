@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import { BsFilePost } from 'react-icons/bs';
 
-import { BsBoxArrowUp } from 'react-icons/bs';
+import Constants from 'lib/constants';
 
 import styles from './item.module.scss';
 
@@ -10,7 +11,7 @@ import styles from './item.module.scss';
 dayjs.extend(advancedFormat);
 
 const Item = ({item}) => {
-    const day = dayjs(item.created).format('dddd, MMMM Do, YYYY [at] H:mm a');
+    const day = dayjs(item.created).format(Constants.DATE_FORMAT_FULL);
 
     const gradient = {
         background: item.gradient,
@@ -36,10 +37,10 @@ const Item = ({item}) => {
                 <p className={styles.Item__text}>{item.entry}</p>
             </div>
             <div className={styles.Item__buttons}>
-                <Link href={`/share/${item.id}`}>
+                <Link href={`/details/${item.id}`}>
                     <a>
-                        <span>Share</span>
-                        <BsBoxArrowUp />
+                        <span>Details</span>
+                        <BsFilePost alt="View" />
                     </a>
                 </Link>
             </div>

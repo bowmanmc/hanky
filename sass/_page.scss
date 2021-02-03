@@ -1,0 +1,9 @@
+@import 'sass/colors';
+
+
+@mixin page {
+    background: $color-page-background;
+    border-radius: 1.5em 1.5em 0 0;
+    color: $color-page-text;
+    padding: 1.0em 1.0em 2.5em 1.0em;
+}

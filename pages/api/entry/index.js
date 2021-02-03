@@ -20,7 +20,7 @@ export default async function handle(request, response) {
             });
         }
         else {
-            const params = DataUtils.entryParams(author, entry, localtime);
+            const params = DataUtils.addEntryParams(author, entry, localtime);
             await db.put(params).then(result => {
                 response.json(params);
             }).catch(error => {

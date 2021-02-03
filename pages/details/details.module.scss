@@ -1,13 +1,15 @@
 @import 'sass/colors';
-@import 'sass/page';
 @import 'sass/typography';
+@import 'sass/page';
 
-.HomePage {
+.DetailsPage {
     @include page();
 
     &__date {
         @include fontsize($fontsize-large);
 
         font-weight: $fontweight-bold;
+        margin: 0 0 1.0em 0;
     }
+
 }
