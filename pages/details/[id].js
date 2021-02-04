@@ -1,14 +1,14 @@
 import Switch from 'react-switch';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { signIn, useSession } from 'next-auth/client';
 
 import Polaroid from 'components/polaroid';
+import PublicSwitch from 'components/forms/publicswitch';
 import Constants from 'lib/constants';
 
 import styles from './details.module.scss';
-
 
 const DetailsPage = (props) => {
     const [session, loading] = useSession();
@@ -31,11 +31,10 @@ const DetailsPage = (props) => {
 
     const [item, setItem] = useState(null);
     useEffect(() => {
-        loadItem(id).then(i => {
+        loadItem(id).then((i) => {
             setItem(i);
         });
     }, [id]);
-
 
     // Loading Screen
     if (!item) {
@@ -56,35 +55,18 @@ const DetailsPage = (props) => {
 
     return (
         <div className={styles.DetailsPage}>
-
             <p className={styles.DetailsPage__date} style={dateTxt}>
                 On {day} you were thinking about...
             </p>
 
-            {item && <Polaroid item={item} /> }
+            <Polaroid item={item} />
 
-            <label className={styles.DetailsPage__publicswitch}>
-                <Switch
-                    onChange={async () => {
-                        const updates = Object.assign({}, item, {isPublic: !item.isPublic});
-                        console.log('Updates: ' + JSON.stringify(updates));
-                        const result = await fetch(`/api/entry/${item.id}`, {
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(updates),
-                        });
-                        console.log('Update result: ' + JSON.stringify(result));
-                        setItem(updates);
-                    }}
-                    checked={item.isPublic}
-                />
-                <span>
-                    Switch to make entry
-                    {item.isPublic ? ' private' : ' public'}
-                </span>
-            </label>
+            <PublicSwitch
+                item={item}
+                onUpdate={(updated) => {
+                    setItem(updated);
+                }}
+            />
         </div>
     );
 };

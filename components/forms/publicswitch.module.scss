@@ -1,0 +1,31 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+
+.PublicSwitch {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    padding: 1.0em 0;
+
+
+    &__instructions {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0.5em;
+    }
+
+    &__main {
+        @include fontsize($fontsize-normal);
+
+        color: $color-gray-30;
+        font-weight: $fontweight-bold;
+    }
+
+    &__more {
+        @include fontsize($fontsize-small);
+
+        color: $color-gray-30;
+        font-weight: $fontsize-normal;
+    }
+}
