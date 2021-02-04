@@ -21,6 +21,19 @@ const handleGet = async (request, response, sessionUser) => {
     }
 };
 
+const handleUpdate = async (request, response, sessionUser) => {
+    const { body: { sk, id, entry, isPublic }} = request;
+    // Generate pk from session user to prevent any funny business
+    const pk = DataUtils.pk(sessionUser);
+    const params = DataUtils.updateEntryParams({pk, sk, id}, {entry, isPublic});
+    console.log('Update Params: ' + JSON.stringify(params));
+    const results = await db.update(params);
+
+    console.log('UPDATE: ' + JSON.stringify(results));
+
+    response.json(results);
+};
+
 // GET, UPDATE, & DELETE methods require a
 // valid session. All of these look up the
 // entry by assuming sessionUser === author
@@ -35,8 +48,9 @@ export default async function handle(request, response) {
         if (request.method === 'GET') {
             await handleGet(request, response, sessionUser);
         }
-        else if (request.method === 'UPDATE') {
+        else if (request.method === 'PUT') {
             // handleUpdate
+            await handleUpdate(request, response, sessionUser);
         }
         else if (request.method === 'DELETE') {
             // handleDelete

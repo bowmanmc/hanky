@@ -1,3 +1,4 @@
+import Switch from 'react-switch';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
@@ -62,7 +63,28 @@ const DetailsPage = (props) => {
 
             {item && <Polaroid item={item} /> }
 
-
+            <label className={styles.DetailsPage__publicswitch}>
+                <Switch
+                    onChange={async () => {
+                        const updates = Object.assign({}, item, {isPublic: !item.isPublic});
+                        console.log('Updates: ' + JSON.stringify(updates));
+                        const result = await fetch(`/api/entry/${item.id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(updates),
+                        });
+                        console.log('Update result: ' + JSON.stringify(result));
+                        setItem(updates);
+                    }}
+                    checked={item.isPublic}
+                />
+                <span>
+                    Switch to make entry
+                    {item.isPublic ? ' private' : ' public'}
+                </span>
+            </label>
         </div>
     );
 };
