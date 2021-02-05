@@ -6,6 +6,7 @@ import { signIn, useSession } from 'next-auth/client';
 
 import Polaroid from 'components/polaroid';
 import PublicSwitch from 'components/forms/publicswitch';
+import ShareBox from 'components/sharebox';
 import Constants from 'lib/constants';
 
 import styles from './details.module.scss';
@@ -46,20 +47,14 @@ const DetailsPage = (props) => {
     }
 
     const day = dayjs(item.created).format(Constants.DATE_FORMAT_DAY);
-    const dateTxt = {
-        background: item.gradient,
-        backgroundClip: 'text',
-        WebkitBackgroundClip: 'text',
-        color: 'transparent',
-    };
 
     return (
         <div className={styles.DetailsPage}>
-            <p className={styles.DetailsPage__date} style={dateTxt}>
+            <p className={styles.DetailsPage__date}>
                 On {day} you were thinking about...
             </p>
 
-            <Polaroid item={item} />
+            <Polaroid item={item} editable={true} onUpdate={updated => setItem(updated)}/>
 
             <PublicSwitch
                 item={item}
@@ -67,6 +62,8 @@ const DetailsPage = (props) => {
                     setItem(updated);
                 }}
             />
+
+            {item.isPublic && <ShareBox item={item} />}
         </div>
     );
 };

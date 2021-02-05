@@ -26,11 +26,7 @@ const handleUpdate = async (request, response, sessionUser) => {
     // Generate pk from session user to prevent any funny business
     const pk = DataUtils.pk(sessionUser);
     const params = DataUtils.updateEntryParams({pk, sk, id}, {entry, isPublic});
-    console.log('Update Params: ' + JSON.stringify(params));
     const results = await db.update(params);
-
-    console.log('UPDATE: ' + JSON.stringify(results));
-
     response.json(results);
 };
 

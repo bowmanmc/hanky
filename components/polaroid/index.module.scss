@@ -4,10 +4,10 @@
 
 .Polaroid {
     border: 5px solid $color-white;
-    border-bottom: 48px solid $color-white;
     border-radius: 5px;
     box-shadow: 0 0 0.5em $color-gray-50;
     display: flex;
+    flex-direction: column;
 
     &__item {
         align-items: center;
@@ -24,5 +24,19 @@
         font-weight: $fontweight-bold;
         padding: 1.0em 0.5em;
         text-shadow: 2px 2px 0 $color-gray-20;
+    }
+
+    &__buttons {
+        align-items: center;
+        background: $color-white;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.5em 0;
+
+        svg {
+            fill: $color-gray-30;
+            height: 32px;
+            width: 32px;
+        }
     }
 }

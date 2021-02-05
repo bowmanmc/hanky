@@ -1,0 +1,26 @@
+@import 'sass/colors';
+@import 'sass/page';
+@import 'sass/typography';
+
+.JarPage {
+    @include page();
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__icon {
+        svg {
+            fill: $color-dark;
+            height: 64px;
+            width: 64px;
+        }
+    }
+
+    &__title {
+        @include fontsize($fontsize-large);
+
+        font-weight: $fontweight-bold;
+    }
+}
