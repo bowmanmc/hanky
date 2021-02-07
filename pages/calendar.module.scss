@@ -1,0 +1,8 @@
+@import 'sass/colors';
+@import 'sass/typography';
+@import 'sass/page';
+
+
+.CalendarPage {
+    @include page();
+}

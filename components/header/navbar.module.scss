@@ -1,0 +1,48 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+
+.Navbar {
+
+    $button-size: 52px;
+    &__navbutton {
+        align-items: center;
+        //background: $Pastel-3;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        margin-right: 0.75em;
+        width: $button-size;
+        height: $button-size;
+
+        svg {
+            height: $button-size * 0.5;
+            width: $button-size * 0.5;
+        }
+
+        a {
+            align-items: center;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    nav {
+        margin: 2.5em 0;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            display: flex;
+        }
+    }
+}

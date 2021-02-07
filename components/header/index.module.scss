@@ -1,78 +1,55 @@
 @import 'sass/colors';
+@import 'sass/devices';
 @import 'sass/typography';
 
 .Header {
-    padding: 1.5em 0.5em;
+    background: $color-yellow url('/images/thanky-background.svg') center center no-repeat;
+    background-size: cover;
+    color: $color-dark;
+    display: flex;
+    flex-direction: column;
+    min-height: 256px;
+    padding: 1.0em;
 
     &__greeting {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+    }
+
+    &__nav {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__howdy {
         @include fontsize($fontsize-xl);
         display: block;
+        font-family: $fontstack-headings;
         font-weight: $fontweight-bold;
     }
 
     &__compliment {
         @include fontsize($fontsize-normal);
         display: block;
+        font-family: $fontstack-body;
     }
 
-    $button-size: 52px;
-    &__navbutton {
-        align-items: center;
-        //background: $Pastel-3;
-        border: 1px solid $color-white;
-        border-radius: 50%;
-        box-shadow: 2.5px 2.5px 0 darken($BlueRaspberry-1, 5%);
-        color: $BlueRaspberry-1;
-        display: flex;
-        justify-content: center;
-        margin-right: 0.75em;
-        width: $button-size;
-        height: $button-size;
+    &__logo {
+        padding-top: 0.75em;
 
         svg {
-            fill: $BlueRaspberry-1;
-            height: $button-size * 0.5;
-            width: $button-size * 0.5;
-        }
+            height: 72px;
+            width: auto;
 
-        a {
-            align-items: center;
-            display: flex;
-            flex: 1;
-            justify-content: center;
-            text-align: center;
+            @include desktop {
+                height: 128px;
+            }
         }
     }
 
-    &__navbutton:nth-child(1n) {
-        background: #ACFFDF;
-    }
-    &__navbutton:nth-child(2n) {
-        background: #A3FFAF;
-    }
-    &__navbutton:nth-child(3n) {
-        background: #C3FF9B;
-    }
-    &__navbutton:nth-child(4n) {
-        background: #F9FF9B;
-    }
-    &__navbutton:nth-child(5n) {
-        background: #FFF09C;
-    }
-
-    nav {
-        margin: 2.5em 0;
-    }
-
-    ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        list-style: none;
-        padding-left: 0;
-
-        li {
-            display: flex;
-        }
+    &__text {
+        padding-left: 1.0em;
     }
 }

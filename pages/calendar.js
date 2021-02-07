@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
-
 import { signIn, useSession } from 'next-auth/client';
+
+import Feed from 'components/feed';
+
+import styles from './calendar.module.scss';
 
 
 const CalendarPage = (props) => {
@@ -9,11 +12,23 @@ const CalendarPage = (props) => {
         signIn();
     }
 
-    const name = session?.user?.name;
-    return (
-        <div>
+    const loadData = async () => {
+        const response = await fetch('/api/entries/feed');
+        const items = await response.json();
+        return items;
+    };
 
-            <h1>calendar page</h1>
+    const [feed, setFeed] = useState([]);
+    useEffect(() => {
+        loadData().then(items => {
+            setFeed(items);
+        });
+    }, []);
+
+    return (
+        <div className={styles.CalendarPage}>
+
+            <Feed feed={feed} />
 
         </div>
     );

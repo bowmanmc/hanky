@@ -3,15 +3,16 @@ import { getSession } from 'next-auth/client';
 import DataUtils from 'lib/datautils';
 import db from 'lib/db';
 
+const FEED_LIMIT = 100;
 
-// GET /api/hankies
+// GET /api/entries/feed
 export default async function handle(request, response) {
     const session = await getSession({
         req: request
     });
     if (session) {
         const author = session.user.email;
-        const params = DataUtils.feedParams(author);
+        const params = DataUtils.feedParams(author, FEED_LIMIT);
         await db.query(params).then(results => {
             response.json(results.Items || []);
         }).catch(error => {

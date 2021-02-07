@@ -1,14 +1,8 @@
-import Link from 'next/link';
-import {
-    BsBucketFill,
-    BsGiftFill,
-    BsCalendarFill,
-    BsPlus,
-    BsSearch,
-} from 'react-icons/bs';
-
 import { getCompliment } from 'lib/compliments';
 import { getGreeting } from 'lib/greetings';
+
+import { LogoIcon } from '../logo';
+import Navbar from './navbar';
 
 import styles from './index.module.scss';
 
@@ -18,48 +12,18 @@ const compliment = getCompliment();
 const Header = () => {
     return (
         <div className={styles.Header}>
-            <span className={styles.Header__greeting}>{greeting} Michael!</span>
-            <span className={styles.Header__compliment}>{compliment}</span>
-
-            <nav>
-                <ul>
-                    <li className={styles.Header__navbutton}>
-                        <Link href="/">
-                            <a>
-                                <BsPlus />
-                            </a>
-                        </Link>
-                    </li>
-                    <li className={styles.Header__navbutton}>
-                        <Link href="/jar">
-                            <a>
-                                <BsBucketFill />
-                            </a>
-                        </Link>
-                    </li>
-                    <li className={styles.Header__navbutton}>
-                        <Link href="/gift">
-                            <a>
-                                <BsGiftFill />
-                            </a>
-                        </Link>
-                    </li>
-                    <li className={styles.Header__navbutton}>
-                        <Link href="/calendar">
-                            <a>
-                                <BsCalendarFill />
-                            </a>
-                        </Link>
-                    </li>
-                    <li className={styles.Header__navbutton}>
-                        <Link href="/search">
-                            <a>
-                                <BsSearch />
-                            </a>
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            <div className={styles.Header__greeting}>
+                <div className={styles.Header__logo}>
+                    <LogoIcon />
+                </div>
+                <div className={styles.Header__text}>
+                    <span className={styles.Header__howdy}>{greeting} Michael!</span>
+                    <span className={styles.Header__compliment}>{compliment}</span>
+                </div>
+            </div>
+            <div className={styles.Headder__nav}>
+                <Navbar />
+            </div>
         </div>
     );
 };

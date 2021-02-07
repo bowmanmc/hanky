@@ -5,4 +5,13 @@ module.exports = {
         AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
         TABLE_NAME: process.env.TABLE_NAME,
     },
+
+    webpack(config) {
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: ['@svgr/webpack'],
+        });
+
+        return config;
+    },
 };
