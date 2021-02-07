@@ -3,6 +3,18 @@
 
 
 .Navbar {
+    background: $color-dark;
+    color: $color-light;
+    padding: 0.5em;
+
+    &__logo {
+
+        svg {
+            fill: $color-light;
+            height: 24px;
+            width: auto;
+        }
+    }
 
     $button-size: 52px;
     &__navbutton {

@@ -8,12 +8,18 @@ import {
     BsSearch,
 } from 'react-icons/bs';
 
+import { LogoWord } from '../logo';
+
 import styles from './navbar.module.scss';
 
 
 const Navbar = () => {
     return (
-            <nav className={styles.Navbar}>
+        <div className={styles.Navbar}>
+            <div className={styles.Navbar__logo}>
+                <LogoWord />
+            </div>
+            {/* <nav>
                 <ul>
                     <li className={styles.Navbar__navbutton}>
                         <Link href="/">
@@ -37,7 +43,8 @@ const Navbar = () => {
                         </Link>
                     </li>
                 </ul>
-            </nav>
+            </nav> */}
+        </div>
     );
 };
 export default Navbar;
