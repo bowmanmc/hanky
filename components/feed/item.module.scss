@@ -1,25 +1,47 @@
 @import 'sass/colors';
 @import 'sass/typography';
 
+
 .Item {
-    border-radius: 0.5em;
+    background: $color-white;
+    border-radius: 0 0 0.5em 0.5em;
     box-shadow: 0 0 0.5em $color-gray-70;
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.0em;
+    margin: 1.0em 0;
+
+    &__gradient {
+        background: linear-gradient(
+            to right,
+            $color-purple 20%,
+            $color-blue 20%,
+            $color-blue 40%,
+            $color-green 40%,
+            $color-green 60%,
+            $color-yellow-green 60%,
+            $color-yellow-green 80%,
+            $color-yellow 80%
+        );
+        height: 9px;
+    }
+
+    &__entry {
+        padding: 0.5em;
+    }
 
     &__buttons {
         @include fontsize($fontsize-small);
 
         align-items: center;
-        color: $color-white;
+        color: $color-dark;
         display: flex;
+        font-family: $fontstack-headings;
         justify-content: flex-end;
         padding: 0.5em;
         text-transform: uppercase;
 
         svg {
-            fill: $color-white;
+            fill: $color-gray-40;
             height: 16px;
             margin: 0 0.25em;
             width: 16px;
@@ -27,34 +49,14 @@
 
         a {
             align-items: center;
-            color: $color-white;
+            color: $color-gray-40;
             display: flex;
             justify-content: center;
             text-decoration: none;
         }
     }
 
-    &__entry {
-        @include fontsize($fontsize-large);
-
-        border-radius: 0.35em 0.35em 0 0;
-        background: $color-light;
-        flex: 1;
-        padding: 0.5em;
-
-        p {
-            margin: 1.0em 0;
-        }
-    }
-
     &__date {
-        @include fontsize($fontsize-small);
-
-        //background: linear-gradient(to right, red, blue);
-        //background-clip: text;
-        //color: transparent;
-        display: block;
-        font-weight: $fontweight-bold;
-        margin: 0 0 0.5em 0;
+        font-family: $fontstack-headings;
     }
 }

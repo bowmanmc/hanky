@@ -1,4 +1,3 @@
-
 import Full from './logo-full.svg';
 import Icon from './icon.svg';
 import Word from './wordmark.svg';
