@@ -1,13 +1,23 @@
 @import 'sass/colors';
+@import 'sass/devices';
 @import 'sass/typography';
 
 
-.Navbar {
+.NavbarContainer {
     background: $color-dark;
     color: $color-light;
+    display: flex;
+    flex-direction: column;
+}
+
+.Navbar {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
     padding: 0.5em;
 
     &__logo {
+        padding-right: 1.0em;
 
         svg {
             fill: $color-light;
@@ -16,45 +26,115 @@
         }
     }
 
-    $button-size: 52px;
-    &__navbutton {
+    nav {
+        flex: 1;
+    }
+}
+
+.NavbarDesktop {
+    display: none;
+
+    @include desktop {
+        display: inline-block;
+    }
+
+    ul {
         align-items: center;
-        //background: $Pastel-3;
-        border: 1px solid $color-white;
-        border-radius: 50%;
         display: flex;
-        justify-content: center;
-        margin-right: 0.75em;
-        width: $button-size;
-        height: $button-size;
+        flex-direction: row;
+        justify-content: flex-end;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+
+        &:last-child {
+
+            a {
+                border-right: none;
+                padding-right: 0;
+            }
+        }
+    }
+
+    a {
+        align-items: center;
+        border-right: 1px solid $color-gray-50;
+        display: flex;
+        flex-direction: row;
+        color: $color-light;
+        font-family: $fontstack-headings;
+        padding: 0.25em 1.0em;
+        text-decoration: none;
+
+        &:hover {
+            background: $color-gray-30;
+        }
+
+        span {
+            @include fontsize($fontsize-normal);
+        }
 
         svg {
-            height: $button-size * 0.5;
-            width: $button-size * 0.5;
+            fill: $color-light;
+            height: $fontsize-small;
+            margin-right: 0.15em;
+        }
+    }
+}
+
+.NavbarMobile {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+
+    @include desktop {
+        display: none;
+    }
+
+    button {
+        @include fontsize($fontsize-normal);
+        align-items: center;
+        background: transparent;
+        border: none;
+        color: $color-light;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0.25em;
+
+    }
+
+    &__links {
+        ul {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            padding: 1.0em 0;
+            margin: 0;
         }
 
         a {
             align-items: center;
             display: flex;
-            flex: 1;
-            justify-content: center;
-            text-align: center;
-        }
-    }
+            flex-direction: row;
+            color: $color-light;
+            font-family: $fontstack-headings;
+            padding: 0.5em 2.0em 0.5em 0;
+            text-decoration: none;
 
-    nav {
-        margin: 2.5em 0;
-    }
+            span {
+                @include fontsize($fontsize-normal);
+            }
 
-    ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        list-style: none;
-        padding-left: 0;
-
-        li {
-            display: flex;
+            svg {
+                fill: $color-light;
+                height: $fontsize-small;
+                margin-right: 0.25em;
+            }
         }
     }
 }

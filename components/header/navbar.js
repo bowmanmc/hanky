@@ -1,49 +1,66 @@
 import Link from 'next/link';
-import {
-    BsHouseDoorFill,
-    BsBucketFill,
-    BsGiftFill,
-    BsCalendarFill,
-    BsPlus,
-    BsSearch,
-} from 'react-icons/bs';
+import { useEffect, useState } from 'react';
+import { BsList, BsX } from 'react-icons/bs';
+import { useRouter } from 'next/router';
 
+import NavLinks from './navlinks';
 import { LogoWord } from '../logo';
 
 import styles from './navbar.module.scss';
 
-
 const Navbar = () => {
+    const router = useRouter();
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    useEffect(() => {
+        const handleRouteChange = (url) => {
+            setMobileOpen(false);
+        };
+        router.events.on('routeChangeStart', handleRouteChange);
+        return () => {
+            router.events.off('routeChangeStart', handleRouteChange);
+        };
+    }, []);
+
+    let mobileButton = (
+        <button
+            onClick={() => {
+                setMobileOpen(true);
+            }}
+        >
+            <BsList />
+        </button>
+    );
+    if (mobileOpen) {
+        mobileButton = (
+            <button
+                onClick={() => {
+                    setMobileOpen(false);
+                }}
+            >
+                <BsX />
+            </button>
+        );
+    }
+
     return (
-        <div className={styles.Navbar}>
-            <div className={styles.Navbar__logo}>
-                <LogoWord />
+        <div className={styles.NavbarContainer}>
+            <div className={styles.Navbar}>
+                <div className={styles.Navbar__logo}>
+                    <Link href="/">
+                        <a>
+                            <LogoWord />
+                        </a>
+                    </Link>
+                </div>
+                <nav className={styles.NavbarDesktop}>
+                    <NavLinks />
+                </nav>
+                <nav className={styles.NavbarMobile}>{mobileButton}</nav>
             </div>
-            {/* <nav>
-                <ul>
-                    <li className={styles.Navbar__navbutton}>
-                        <Link href="/">
-                            <a>
-                                <BsHouseDoorFill />
-                            </a>
-                        </Link>
-                    </li>
-                    <li className={styles.Navbar__navbutton}>
-                        <Link href="/jar">
-                            <a>
-                                <BsBucketFill />
-                            </a>
-                        </Link>
-                    </li>
-                    <li className={styles.Navbar__navbutton}>
-                        <Link href="/calendar">
-                            <a>
-                                <BsCalendarFill />
-                            </a>
-                        </Link>
-                    </li>
-                </ul>
-            </nav> */}
+            <div className={styles.NavbarMobile__links}>
+                {mobileOpen && <NavLinks />}
+            </div>
         </div>
     );
 };
