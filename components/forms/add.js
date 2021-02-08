@@ -38,7 +38,7 @@ const Form = (props) => {
                 />
 
                 <div className={styles.Form__buttons}>
-                    <button onClick={saveEntry}>Save</button>
+                    <button onClick={saveEntry}>Save Entry</button>
                 </div>
             </form>
         </div>

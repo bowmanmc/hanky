@@ -7,7 +7,7 @@
 
     &__date {
         @include fontsize($fontsize-large);
-
+        font-family: $fontstack-headings;
         font-weight: $fontweight-bold;
     }
 }

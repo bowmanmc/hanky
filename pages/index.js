@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { useEffect, useState } from 'react';
@@ -37,21 +36,18 @@ const HomePage = (props) => {
     const name = session?.user?.name;
     return (
         <div className={styles.HomePage}>
-            <Head>
-                <title>Thanky</title>
-            </Head>
+            <main>
+                <span className={styles.HomePage__date}>{day}</span>
 
-            <span className={styles.HomePage__date}>{day}</span>
+                <PromptBox />
 
-            <PromptBox />
+                <Form onAdd={(item) => {
+                    setFeed([item, ...feed]);
+                }} />
 
-            <Form onAdd={(item) => {
-                setFeed([item, ...feed]);
-            }} />
-
-            {/* Only today's items */}
-            <Feed feed={feed} />
-
+                {/* Only today's items */}
+                <Feed feed={feed} />
+            </main>
         </div>
     );
 };
