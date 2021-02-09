@@ -24,7 +24,6 @@ const Item = ({item}) => {
                 <Link href={`/details/${item.id}`}>
                     <a>
                         <BsGearFill alt="View" />
-                        <span>Settings</span>
                     </a>
                 </Link>
             </div>

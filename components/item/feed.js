@@ -1,6 +1,6 @@
 import Item from './item';
 
-import styles from './index.module.scss';
+import styles from './feed.module.scss';
 
 
 const Feed = props => {

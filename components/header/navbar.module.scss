@@ -108,12 +108,14 @@
     }
 
     &__links {
+        padding: 0 1.0em;
+
         ul {
             align-items: flex-start;
             display: flex;
             flex-direction: column;
             list-style: none;
-            padding: 1.0em 0;
+            padding: 0;
             margin: 0;
         }
 

@@ -3,7 +3,7 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { useEffect, useState } from 'react';
 import { signIn, useSession } from 'next-auth/client';
 
-import Feed from 'components/feed';
+import Feed from 'components/item/feed';
 import Form from 'components/forms/add';
 import PromptBox from 'components/promptbox';
 
