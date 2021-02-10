@@ -3,6 +3,7 @@ import {
     BsHouseDoorFill,
     BsBucketFill,
     BsCalendarFill,
+    BsBrightnessAltHighFill,
 } from 'react-icons/bs';
 
 
@@ -18,18 +19,18 @@ const NavLinks = () => {
                 </Link>
             </li>
             <li>
-                <Link href="/jar">
+                <Link href="/board">
                     <a>
-                        <BsBucketFill />
-                        <span>Jar</span>
+                        <BsBrightnessAltHighFill />
+                        <span>Board</span>
                     </a>
                 </Link>
             </li>
             <li>
-                <Link href="/calendar">
+                <Link href="/history">
                     <a>
                         <BsCalendarFill />
-                        <span>Feed</span>
+                        <span>History</span>
                     </a>
                 </Link>
             </li>

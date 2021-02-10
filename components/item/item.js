@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import { BsBookmark, BsBookmarkFill, BsGearFill } from 'react-icons/bs';
+import { BsGearFill } from 'react-icons/bs';
+import { AiFillPushpin, AiOutlinePushpin } from 'react-icons/ai';
 
+import Api from 'lib/api';
 import Constants from 'lib/constants';
 
 import styles from './item.module.scss';
@@ -10,7 +12,7 @@ import styles from './item.module.scss';
 
 dayjs.extend(advancedFormat);
 
-const Item = ({item}) => {
+const Item = ({item, onUpdate}) => {
     const day = dayjs(item.created).format(Constants.DATE_FORMAT_FULL);
 
     return (
@@ -21,10 +23,12 @@ const Item = ({item}) => {
                 <p className={styles.Item__text}>{item.entry}</p>
             </div>
             <div className={styles.Item__buttons}>
-                <button onClick={() => {
-                    // toggle pinned attribute
+                <button onClick={async () => {
+                    const updates = Object.assign({}, item, {isPinned: !item.isPinned});
+                    await Api.updateItem(updates);
+                    onUpdate(updates);
                 }}>
-                    {item.pinned ? <BsBookmarkFill /> : <BsBookmark />}
+                    {item.isPinned ? <AiFillPushpin /> : <AiOutlinePushpin />}
                 </button>
 
                 <Link href={`/details/${item.id}`}>

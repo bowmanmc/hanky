@@ -1,36 +1,31 @@
 import { useEffect, useState } from 'react';
 import { signIn, useSession } from 'next-auth/client';
 
+import Api from 'lib/api';
 import Feed from 'components/item/feed';
 
-import styles from './calendar.module.scss';
+import styles from './history.module.scss';
 
 
-const CalendarPage = (props) => {
+const HistoryPage = (props) => {
     const [session, loading] = useSession();
     if (!session && !loading) {
         signIn();
     }
 
-    const loadData = async () => {
-        const response = await fetch('/api/entries/feed');
-        const items = await response.json();
-        return items;
-    };
-
     const [feed, setFeed] = useState([]);
     useEffect(() => {
-        loadData().then(items => {
+        Api.allFeed().then(items => {
             setFeed(items);
         });
     }, []);
 
     return (
-        <div className={styles.CalendarPage}>
+        <div className={styles.HistoryPage}>
 
             <Feed feed={feed} />
 
         </div>
     );
 };
-export default CalendarPage;
+export default HistoryPage;

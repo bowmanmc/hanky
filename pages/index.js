@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { signIn, useSession } from 'next-auth/client';
 
 import Api from 'lib/api';
-import Feed from 'components/item/feed';
+import Item from 'components/item/item';
 import Form from 'components/forms/add';
 import PromptBox from 'components/promptbox';
 
@@ -40,8 +40,19 @@ const HomePage = (props) => {
                     setFeed([item, ...feed]);
                 }} />
 
-                {/* Only today's items */}
-                <Feed feed={feed} />
+                <div className={styles.HomePage__feed}>
+                {
+                    feed.map((item, index) => {
+                        return (
+                            <Item key={item.id} item={item} onUpdate={updated => {
+                                const newFeed = [...feed];
+                                newFeed[index] = updated;
+                                setFeed(newFeed);
+                            }}/>
+                        );
+                    })
+                }
+                </div>
             </main>
         </div>
     );

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { signIn, useSession } from 'next-auth/client';
 
+import Api from 'lib/api';
 import Polaroid from 'components/polaroid';
 import PublicSwitch from 'components/forms/publicswitch';
 import ShareBox from 'components/sharebox';
@@ -20,19 +21,9 @@ const DetailsPage = (props) => {
     const router = useRouter();
     const { id } = router.query;
 
-    const loadItem = async (itemId) => {
-        if (!itemId) {
-            return;
-        }
-
-        const response = await fetch(`/api/entry/${itemId}`);
-        const item = await response.json();
-        return item;
-    };
-
     const [item, setItem] = useState(null);
     useEffect(() => {
-        loadItem(id).then((i) => {
+        Api.fetchItem(id).then((i) => {
             setItem(i);
         });
     }, [id]);
