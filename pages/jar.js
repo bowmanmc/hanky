@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { BsBucketFill } from 'react-icons/bs';
 import { signIn, useSession } from 'next-auth/client';
 
-import Random from 'components/item/random';
+import Item from 'components/item/item';
+import Api from 'lib/api';
 
 import styles from './jar.module.scss';
 
@@ -13,6 +14,22 @@ const JarPage = (props) => {
         signIn();
     }
 
+    // Pinned Feed
+
+
+    const [randomFeed, setRandomFeed] = useState([]);
+    const [randomIndex, setRandomIndex] = useState(0);
+    useEffect(() => {
+        Api.randomizedFeed().then(items => {
+            setRandomFeed(items);
+        });
+    }, []);
+
+    let randomItem = null;
+    if (randomFeed) {
+        randomItem = randomFeed[randomIndex];
+    }
+
     return (
         <div className={styles.JarPage}>
             <div className={styles.JarPage__title}>
@@ -20,7 +37,7 @@ const JarPage = (props) => {
             </div>
 
             <div className={styles.JarPage__items}>
-                <Random />
+                {randomItem && <Item item={randomItem} />}
             </div>
         </div>
     );

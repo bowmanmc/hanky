@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import { BsGearFill } from 'react-icons/bs';
+import { BsBookmark, BsBookmarkFill, BsGearFill } from 'react-icons/bs';
 
 import Constants from 'lib/constants';
 
@@ -21,6 +21,12 @@ const Item = ({item}) => {
                 <p className={styles.Item__text}>{item.entry}</p>
             </div>
             <div className={styles.Item__buttons}>
+                <button onClick={() => {
+                    // toggle pinned attribute
+                }}>
+                    {item.pinned ? <BsBookmarkFill /> : <BsBookmark />}
+                </button>
+
                 <Link href={`/details/${item.id}`}>
                     <a>
                         <BsGearFill alt="View" />

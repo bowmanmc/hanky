@@ -3,6 +3,7 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { useEffect, useState } from 'react';
 import { signIn, useSession } from 'next-auth/client';
 
+import Api from 'lib/api';
 import Feed from 'components/item/feed';
 import Form from 'components/forms/add';
 import PromptBox from 'components/promptbox';
@@ -18,15 +19,9 @@ const HomePage = (props) => {
         signIn();
     }
 
-    const refreshData = async () => {
-        const response = await fetch('/api/entries/today');
-        const items = await response.json();
-        return items;
-    };
-
     const [feed, setFeed] = useState([]);
     useEffect(() => {
-        refreshData().then(items => {
+        Api.todayFeed().then(items => {
             setFeed(items);
         });
     }, [])
