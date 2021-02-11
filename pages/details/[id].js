@@ -11,6 +11,7 @@ import ShareBox from 'components/sharebox';
 import Constants from 'lib/constants';
 
 import styles from './details.module.scss';
+import PinnedSwitch from 'components/forms/pinnedswitch';
 
 const DetailsPage = (props) => {
     const [session, loading] = useSession();
@@ -37,24 +38,37 @@ const DetailsPage = (props) => {
         );
     }
 
-    const day = dayjs(item.created).format(Constants.DATE_FORMAT_DAY);
+    const day = dayjs(item.created).format(Constants.DATE_FORMAT_FULL);
 
     return (
         <div className={styles.DetailsPage}>
-            <p className={styles.DetailsPage__date}>
-                On {day} you were thinking about...
-            </p>
+            <main>
+                <p className={styles.DetailsPage__date}>
+                    On {day} you were thinking about...
+                </p>
 
-            <Polaroid item={item} editable={true} onUpdate={updated => setItem(updated)}/>
+                <Polaroid
+                    item={item}
+                    editable={true}
+                    onUpdate={(updated) => setItem(updated)}
+                />
 
-            <PublicSwitch
-                item={item}
-                onUpdate={(updated) => {
-                    setItem(updated);
-                }}
-            />
+                <PinnedSwitch
+                    item={item}
+                    onUpdate={(updated) => {
+                        setItem(updated);
+                    }}
+                />
 
-            {item.isPublic && <ShareBox item={item} />}
+                <PublicSwitch
+                    item={item}
+                    onUpdate={(updated) => {
+                        setItem(updated);
+                    }}
+                />
+
+                {item.isPublic && <ShareBox item={item} />}
+            </main>
         </div>
     );
 };

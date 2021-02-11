@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import { BsGearFill } from 'react-icons/bs';
-import { AiFillPushpin, AiOutlinePushpin } from 'react-icons/ai';
+import { BsGearFill, BsHeart, BsHeartFill, BsLockFill, BsUnlock } from 'react-icons/bs';
 
 import Api from 'lib/api';
 import Constants from 'lib/constants';
@@ -24,11 +23,18 @@ const Item = ({item, onUpdate}) => {
             </div>
             <div className={styles.Item__buttons}>
                 <button onClick={async () => {
+                    const updates = Object.assign({}, item, {isPublic: !item.isPublic});
+                    await Api.updateItem(updates);
+                    onUpdate(updates);
+                }}>
+                    {item.isPublic ? <BsUnlock /> : <BsLockFill />}
+                </button>
+                <button onClick={async () => {
                     const updates = Object.assign({}, item, {isPinned: !item.isPinned});
                     await Api.updateItem(updates);
                     onUpdate(updates);
                 }}>
-                    {item.isPinned ? <AiFillPushpin /> : <AiOutlinePushpin />}
+                    {item.isPinned ? <BsHeartFill /> : <BsHeart />}
                 </button>
 
                 <Link href={`/details/${item.id}`}>

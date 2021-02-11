@@ -13,12 +13,6 @@ const Polaroid = ({ item, editable, onUpdate }) => {
 
     const day = dayjs(item.created).format('dddd, MMMM Do, YYYY [at] H:mm a');
 
-    const background = {
-        background: `url(/images/backgrounds/${item.pattern}), ${item.gradient}`,
-        backgroundRepeat: 'no-repeat, no-repeat',
-        backgroundSize: 'cover, cover',
-    };
-
     const toggleEditMode = () => {
         setEditMode(!editMode);
     };
@@ -42,7 +36,7 @@ const Polaroid = ({ item, editable, onUpdate }) => {
     };
 
     const preview = (
-        <div className={styles.Polaroid__item} style={background}>
+        <div className={styles.Polaroid__item}>
             <p className={styles.Polaroid__content}>{item.entry}</p>
         </div>
     );
