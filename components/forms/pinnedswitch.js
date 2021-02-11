@@ -1,7 +1,9 @@
 import Switch from 'react-switch';
 import Api from 'lib/api';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
 
 import styles from './switch.module.scss';
+
 
 const PinnedSwitch = ({ item, onUpdate }) => {
     return (
@@ -17,6 +19,9 @@ const PinnedSwitch = ({ item, onUpdate }) => {
                 }}
                 checked={item.isPinned}
             />
+            <div className={styles.Switch__icon}>
+                {item.isPinned ? <BsHeartFill /> : <BsHeart />}
+            </div>
             <div className={styles.Switch__instructions}>
                 <span className={styles.Switch__main}>
                     This entry is {' '}

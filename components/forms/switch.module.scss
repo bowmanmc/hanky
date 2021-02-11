@@ -3,11 +3,19 @@
 
 
 .Switch {
-    align-items: flex-start;
+    align-items: center;
     display: flex;
     flex-direction: row;
     padding: 1.0em 0;
 
+    &__icon {
+        padding: 0.5em;
+
+        svg {
+            height: 24px;
+            width: 24px;
+        }
+    }
 
     &__instructions {
         display: flex;

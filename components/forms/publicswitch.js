@@ -1,6 +1,6 @@
-import api from 'lib/api';
 import Switch from 'react-switch';
 import Api from 'lib/api';
+import { BsLockFill, BsUnlock } from 'react-icons/bs';
 
 import styles from './switch.module.scss';
 
@@ -13,11 +13,14 @@ const PublicSwitch = ({ item, onUpdate }) => {
                     const updates = Object.assign({}, item, {
                         isPublic: !item.isPublic,
                     });
-                    await api.updateItem(updates);
+                    await Api.updateItem(updates);
                     onUpdate(updates);
                 }}
                 checked={item.isPublic}
             />
+            <div className={styles.Switch__icon}>
+                {item.isPublic ? <BsUnlock /> : <BsLockFill />}
+            </div>
             <div className={styles.Switch__instructions}>
                 <span className={styles.Switch__main}>
                     This entry is {' '}

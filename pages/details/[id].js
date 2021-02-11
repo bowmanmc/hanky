@@ -1,4 +1,3 @@
-import Switch from 'react-switch';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -6,12 +5,13 @@ import { signIn, useSession } from 'next-auth/client';
 
 import Api from 'lib/api';
 import Polaroid from 'components/polaroid';
+import PinnedSwitch from 'components/forms/pinnedswitch';
 import PublicSwitch from 'components/forms/publicswitch';
 import ShareBox from 'components/sharebox';
 import Constants from 'lib/constants';
 
 import styles from './details.module.scss';
-import PinnedSwitch from 'components/forms/pinnedswitch';
+
 
 const DetailsPage = (props) => {
     const [session, loading] = useSession();
