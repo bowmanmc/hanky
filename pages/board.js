@@ -3,7 +3,7 @@ import { AiOutlinePushpin } from 'react-icons/ai';
 import { BsArrowClockwise } from 'react-icons/bs';
 import { signIn, useSession } from 'next-auth/client';
 
-import Item from 'components/item/item';
+import Item from 'components/item';
 import Api from 'lib/api';
 
 import styles from './board.module.scss';

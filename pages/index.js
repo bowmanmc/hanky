@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { signIn, useSession } from 'next-auth/client';
 
 import Api from 'lib/api';
-import Item from 'components/item/item';
+import Item from 'components/item';
 import Form from 'components/forms/add';
 import PromptBox from 'components/promptbox';
 

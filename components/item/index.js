@@ -7,7 +7,7 @@ import { AiFillPushpin, AiOutlinePushpin } from 'react-icons/ai';
 import Api from 'lib/api';
 import Constants from 'lib/constants';
 
-import styles from './item.module.scss';
+import styles from './index.module.scss';
 
 
 dayjs.extend(advancedFormat);
