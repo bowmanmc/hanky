@@ -17,6 +17,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin: 1.0em 0;
         padding: 1.0em;
 
         button {
@@ -30,5 +31,10 @@
                 margin-right: 0.25em;
             }
         }
+    }
+
+    &__tip {
+        color: $color-gray-40;
+        max-width: 400px;
     }
 }
