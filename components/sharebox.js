@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
 import { FaRegEnvelope, FaFacebookF, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import styles from './sharebox.module.scss';
@@ -28,6 +29,12 @@ const ShareBox = ({ item }) => {
                     <FaEnvelope />
                 </EmailShareButton>
             </div>
+            <p>
+                Your entry is viewable at: &nbsp;
+                <a href={`/thanks/${item.author}/${item.id}`} target="_blank">
+                    {`https://app.getthanky.com/thanks/${item.author}/${item.id}`}
+                </a>
+            </p>
         </div>
     );
 };

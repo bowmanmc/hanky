@@ -52,14 +52,20 @@ const Polaroid = ({ item, editable, onUpdate }) => {
     );
 
     const editButton = editMode ? (
-        <BsCheckBox
+        <button
             onClick={async () => {
                 await updateEntry();
                 toggleEditMode();
             }}
-        />
+        >
+            <BsCheckBox />
+            <span>Save</span>
+        </button>
     ) : (
-        <BsPencilSquare onClick={toggleEditMode} />
+        <button onClick={toggleEditMode}>
+            <BsPencilSquare />
+            <span>Edit</span>
+        </button>
     );
 
     return (

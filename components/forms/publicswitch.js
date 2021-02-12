@@ -6,21 +6,23 @@ import styles from './switch.module.scss';
 
 const PublicSwitch = ({ item, onUpdate }) => {
     return (
-        <label className={styles.Switch}>
-            <Switch
-                onColor='#69875C'
-                onChange={async () => {
-                    const updates = Object.assign({}, item, {
-                        isPublic: !item.isPublic,
-                    });
-                    await Api.updateItem(updates);
-                    onUpdate(updates);
-                }}
-                checked={item.isPublic}
-            />
-            <div className={styles.Switch__icon}>
-                {item.isPublic ? <BsUnlock /> : <BsLockFill />}
-            </div>
+        <div className={styles.Switch}>
+            <label>
+                <Switch
+                    onColor='#69875C'
+                    onChange={async () => {
+                        const updates = Object.assign({}, item, {
+                            isPublic: !item.isPublic,
+                        });
+                        await Api.updateItem(updates);
+                        onUpdate(updates);
+                    }}
+                    checked={item.isPublic}
+                />
+                <div className={styles.Switch__icon}>
+                    {item.isPublic ? <BsUnlock /> : <BsLockFill />}
+                </div>
+            </label>
             <div className={styles.Switch__instructions}>
                 <span className={styles.Switch__main}>
                     This entry is {' '}
@@ -32,7 +34,7 @@ const PublicSwitch = ({ item, onUpdate }) => {
                         : 'Switch to share this entry with the world.'}
                 </span>
             </div>
-        </label>
+        </div>
     );
 };
 export default PublicSwitch;

@@ -11,7 +11,7 @@
 
     &__item {
         align-items: center;
-        background: $color-light;
+        background: rgba($color-yellow, 0.15);
         display: flex;
         flex: 1;
         flex-direction: column;
@@ -33,10 +33,37 @@
         justify-content: flex-end;
         padding: 0.5em 0;
 
+        button {
+            align-items: center;
+            background: none;
+            border: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        span {
+            @include fontsize($fontsize-small);
+            font-family: $fontstack-headings;
+            padding-left: 0.25em;
+        }
+
         svg {
             fill: $color-gray-30;
-            height: 32px;
-            width: 32px;
+            height: 18px;
+            width: 18px;
         }
+    }
+
+    textarea {
+        @include fontsize($fontsize-normal);
+
+        background: rgba($color-yellow, 0.15);
+        border: 1px solid $color-gray-70;
+        color: $color-dark;
+        flex: 1;
+        font-family: $fontstack-body;
+        padding: 0.5em;
+        resize: none;
+        overflow: auto;
     }
 }

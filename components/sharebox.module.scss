@@ -1,15 +1,21 @@
 @import 'sass/colors';
+@import 'sass/typography';
 
 .ShareBox {
+
+    a {
+        @include fontsize($fontsize-small);
+
+        font-family: $fontstack-headings;
+    }
 
     &__buttons {
         align-items: center;
         display: flex;
         flex-direction: row;
-        justify-content: center;
 
         button {
-            margin: 0 0.5em;
+            margin-right: 1.0em;
         }
 
         svg {
