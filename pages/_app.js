@@ -9,13 +9,15 @@ import './_app.scss';
 
 function Thanky({ Component, pageProps }) {
     const router = useRouter();
+
+    // The public thanks page gets an entirely different layout
     const isPublic = router.pathname && router.pathname.indexOf('thanks') >= 0;
 
     return (
         <Provider session={pageProps.session}>
-            {isPublic ? null : <Header /> }
+            { isPublic ? null : <Header /> }
             <Component {...pageProps} />
-            <Footer />
+            { isPublic ? null : <Footer /> }
         </Provider>
     );
 }

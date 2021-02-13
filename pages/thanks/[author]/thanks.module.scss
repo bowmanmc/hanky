@@ -1,9 +1,77 @@
 @import 'sass/colors';
+@import 'sass/devices';
+@import 'sass/page';
 @import 'sass/typography';
 
 
 .ThanksPage {
     background: $color-light;
     color: $color-dark;
-    padding: 1.0em;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 0;
+
+    &__main {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+
+        @include desktop {
+            flex-direction: row;
+        }
+    }
+
+    &__splash {
+        background-position: center center;
+        background-size: cover;
+        border-bottom: 1px solid $color-dark;
+        border-right: none;
+        min-height: 256px;
+        width: 100%;
+
+        @include desktop {
+            border-bottom: none;
+            border-right: 1px solid $color-dark;
+            width: 50%;
+        }
+    }
+
+    &__entry {
+        background: $color-white;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+
+    &__text {
+        @include fontsize($fontsize-large);
+        flex: 1;
+        padding: 1.0em;
+    }
+
+    &__attribution {
+        background: rgba(0, 0, 0, 0.05);
+        border-top: 1px solid $color-white;
+        padding: 1.0em;
+    }
+
+    &__footer {
+        background: $color-dark;
+        color: $color-light;
+        height: 256px;
+        padding: 1.0em;
+    }
+
+    &__topgradient {
+        @include gradient;
+        border-bottom: 1px solid $color-dark;
+    }
+
+    &__bottomgradient {
+        @include gradient;
+        border-top: 1px solid $color-dark;
+    }
 }

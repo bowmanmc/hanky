@@ -35,3 +35,18 @@ $color-page-text: $color-dark;
 
 // Footer
 $color-footer-bg: $color-light;
+
+@mixin gradient() {
+    background: linear-gradient(
+        to right,
+        $color-purple 20%,
+        $color-blue 20%,
+        $color-blue 40%,
+        $color-green 40%,
+        $color-green 60%,
+        $color-yellow-green 60%,
+        $color-yellow-green 80%,
+        $color-yellow 80%
+    );
+    height: 9px;
+}
