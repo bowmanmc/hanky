@@ -1,6 +1,8 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
+import updateUser from 'lib/updateUser';
+
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
@@ -60,7 +62,7 @@ const options = {
     // https://next-auth.js.org/configuration/callbacks
     callbacks: {
         // signIn: async (user, account, profile) => { return Promise.resolve(true) },
-        // signIn: updateUser,
+        signIn: updateUser,
         // redirect: async (url, baseUrl) => { return Promise.resolve(baseUrl) },
         // session: async (session, user) => { return Promise.resolve(session) },
         // jwt: async (token, user, account, profile, isNewUser) => { return Promise.resolve(token) }

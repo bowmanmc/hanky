@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 import Api from 'lib/api';
 import Constants from 'lib/constants';
@@ -6,10 +7,11 @@ import { pictures } from 'lib/backgrounds';
 
 import styles from './thanks.module.scss';
 
+dayjs.extend(advancedFormat);
 
 // This page takes in an id and an author and is the page
 // shared to social media.
-const ThanksPage = ({item}) => {
+const ThanksPage = ({ item, author }) => {
 
     const splash = {
         backgroundImage: `url(/images/backgrounds/${pictures[2]})`,
@@ -29,11 +31,11 @@ const ThanksPage = ({item}) => {
                     </div>
 
                     <div className={styles.ThanksPage__attribution}>
-                        <div className={styles.ThanksPage__attributionavatar}>
-
+                        <div className={styles.ThanksPage__avatar}>
+                            <img src={author.image} alt={author.name} />
                         </div>
                         <div className={styles.ThanksPage__attributiontext}>
-                            Posted by {item.author} on {day}.
+                            Posted by {author.name} on {day}.
                         </div>
                     </div>
 
@@ -51,5 +53,6 @@ export default ThanksPage;
 export async function getServerSideProps(context) {
     const { id, author } = context.query;
     const item = await Api.fetchThanks(author, id);
-    return { props: { item } }
+    const authorDetails = await Api.fetchAuthor(author);
+    return { props: { item, author : authorDetails } };
 };

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import LogoWord from '../logo/wordmark.svg';
+import { signOut } from 'next-auth/client';
 
 import styles from './index.module.scss';
 
@@ -10,6 +11,9 @@ const Footer = () => {
                 <div className={styles.Footer__section}>
                     <div className={styles.Footer__logo}>
                         <LogoWord />
+                        <button onClick={() => {
+                            signOut();
+                        }}>Sign Out</button>
                     </div>
                 </div>
 
