@@ -45,12 +45,28 @@
         font-style: italic;
     }
 
+    &__signoutbtn {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__signout {
+        @include fontsize($fontsize-small);
+        background: none;
+        border: none;
+        color: $color-gray-60;
+        cursor: pointer;
+        font-family: $fontstack-body;
+        padding: 0.5em 0;
+        text-align: left;
+    }
+
     a {
         color: $color-light;
         text-decoration: none;
 
         &:hover {
-            text-decoration: underline;
+            text-decoration: none;
         }
     }
 

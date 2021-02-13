@@ -9,11 +9,20 @@ import updateUser from 'lib/updateUser';
 const options = {
     // https://next-auth.js.org/configuration/providers
     providers: [
-        Providers.Auth0({
-            clientId: process.env.AUTH0_CLIENT_ID,
-            clientSecret: process.env.AUTH0_CLIENT_SECRET,
-            domain: process.env.AUTH0_DOMAIN
-        })
+        // Providers.Auth0({
+        //     clientId: process.env.AUTH0_CLIENT_ID,
+        //     clientSecret: process.env.AUTH0_CLIENT_SECRET,
+        //     domain: process.env.AUTH0_DOMAIN
+        // })
+        // Providers.Cognito({
+        //     clientId: process.env.COGNITO_CLIENT_ID,
+        //     clientSecret: process.env.COGNITO_CLIENT_SECRET,
+        //     domain: process.env.COGNITO_DOMAIN,
+        // }),
+        Providers.Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        }),
     ],
 
     // The secret should be set to a reasonably long random string.

@@ -1,0 +1,38 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+.AccountInfo {
+    background: rgba(0, 0, 0, 0.13);
+    border-radius: 0.25em;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.0em;
+    padding: 0.5em;
+
+    &__avatar {
+        padding-right: 0.5em;
+        img {
+            border: 1px solid $color-white;
+            border-radius: 50%;
+            box-shadow: 0 0 0.25em $color-black;
+            height: 64px;
+            width: 64px;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__name {
+        @include fontsize($fontsize-normal);
+        color: $color-gray-80;
+        font-family: $fontstack-headings;
+    }
+
+    &__email {
+        @include fontsize($fontsize-small);
+        color: $color-gray-60;
+    }
+}

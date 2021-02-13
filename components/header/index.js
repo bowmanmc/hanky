@@ -1,3 +1,5 @@
+import { useSession } from 'next-auth/client';
+
 import { getCompliment } from 'lib/compliments';
 import { getGreeting } from 'lib/greetings';
 
@@ -10,6 +12,10 @@ const greeting = getGreeting();
 const compliment = getCompliment();
 
 const Header = () => {
+
+    const [session] = useSession();
+    const user = session?.user || {};
+
     return (
         <div className={styles.Header}>
             <div className={styles.Header__navbar}>
@@ -21,7 +27,7 @@ const Header = () => {
                 </div>
                 <div className={styles.Header__text}>
                     <span className={styles.Header__howdy}>
-                        {greeting} Michael!
+                        {greeting} {user.name}!
                     </span>
                     <span className={styles.Header__compliment}>
                         {compliment}
