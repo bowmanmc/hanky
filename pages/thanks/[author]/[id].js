@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 
+import Footer from './footer';
 import Api from 'lib/api';
 import Constants from 'lib/constants';
 import { pictures } from 'lib/backgrounds';
@@ -43,7 +44,7 @@ const ThanksPage = ({ item, author }) => {
             </div>
             <div className={styles.ThanksPage__bottomgradient}></div>
             <div className={styles.ThanksPage__footer}>
-                footer
+                <Footer />
             </div>
         </div>
     );

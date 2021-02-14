@@ -1,0 +1,9 @@
+@import 'sass/colors';
+@import 'sass/page';
+@import 'sass/typography';
+
+
+.AccountPage {
+    @include page();
+
+}
