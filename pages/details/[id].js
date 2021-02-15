@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { signIn, useSession } from 'next-auth/client';
 
 import Api from 'lib/api';
-import Polaroid from 'components/polaroid';
+import EntryEditor from 'components/forms/entryeditor';
 import PinnedSwitch from 'components/forms/pinnedswitch';
 import PublicSwitch from 'components/forms/publicswitch';
 import ShareBox from 'components/sharebox';
@@ -47,11 +47,13 @@ const DetailsPage = (props) => {
                     On {day} you were thinking about...
                 </p>
 
-                <Polaroid
+                <EntryEditor
                     item={item}
                     editable={true}
                     onUpdate={(updated) => setItem(updated)}
                 />
+
+
 
                 <PinnedSwitch
                     item={item}

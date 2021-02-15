@@ -22,10 +22,10 @@ const handleGet = async (request, response, sessionUser) => {
 };
 
 const handleUpdate = async (request, response, sessionUser) => {
-    const { body: { sk, id, entry, isPinned, isPublic }} = request;
+    const { body: { sk, id, entry, splash, isPinned, isPublic }} = request;
     // Generate pk from session user to prevent any funny business
     const pk = DataUtils.pk(sessionUser);
-    const params = DataUtils.updateEntryParams({pk, sk, id}, {entry, isPinned, isPublic});
+    const params = DataUtils.updateEntryParams({pk, sk, id}, {entry, splash, isPinned, isPublic});
     const results = await db.update(params);
     response.json(results);
 };

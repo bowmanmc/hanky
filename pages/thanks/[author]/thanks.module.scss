@@ -50,6 +50,10 @@
         @include fontsize($fontsize-large);
         flex: 1;
         padding: 1.0em;
+
+        p {
+            margin: 0;
+        }
     }
 
     &__avatar {

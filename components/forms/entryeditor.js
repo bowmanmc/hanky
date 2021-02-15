@@ -3,11 +3,11 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { useState } from 'react';
 import { BsCheckBox, BsPencilSquare } from 'react-icons/bs';
 
-import styles from './index.module.scss';
+import styles from './entryeditor.module.scss';
 
 dayjs.extend(advancedFormat);
 
-const Polaroid = ({ item, editable, onUpdate }) => {
+const EntryEditor = ({ item, editable, onUpdate }) => {
     const [editMode, setEditMode] = useState(false);
     const [itemText, setItemText] = useState(item.entry);
 
@@ -36,8 +36,8 @@ const Polaroid = ({ item, editable, onUpdate }) => {
     };
 
     const preview = (
-        <div className={styles.Polaroid__item}>
-            <p className={styles.Polaroid__content}>{item.entry}</p>
+        <div className={styles.EntryEditor__item}>
+            <p className={styles.EntryEditor__content}>{item.entry}</p>
         </div>
     );
 
@@ -69,12 +69,12 @@ const Polaroid = ({ item, editable, onUpdate }) => {
     );
 
     return (
-        <div className={styles.Polaroid}>
+        <div className={styles.EntryEditor}>
             {editMode ? textarea : preview}
-            <div className={styles.Polaroid__buttons}>
+            <div className={styles.EntryEditor__buttons}>
                 {editable && editButton}
             </div>
         </div>
     );
 };
-export default Polaroid;
+export default EntryEditor;
