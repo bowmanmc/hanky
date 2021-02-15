@@ -3,7 +3,9 @@
 @import 'sass/typography';
 
 .Footer {
+    background: $color-dark;
     color: $color-gray-60;
+    padding: 2.0em 1.0em;
 
     svg {
         fill: $color-light;

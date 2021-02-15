@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 
+import Meta from './meta';
 import Footer from './footer';
 import Api from 'lib/api';
 import Constants from 'lib/constants';
@@ -15,13 +16,16 @@ dayjs.extend(advancedFormat);
 const ThanksPage = ({ item, author }) => {
 
     const splash = {
-        backgroundImage: `url(/images/backgrounds/${pictures[2]})`,
+        backgroundImage: `url(/images/backgrounds/${item.splash})`,
     };
 
     const day = dayjs(item.created).format(Constants.DATE_FORMAT_FULL);
+    const title = `Thanks from ${author.name} on ${day}`;
+    const url = `https://app.getthanky.com/thanks/${author}/${item.id}`;
 
     return (
         <div className={styles.ThanksPage}>
+            <Meta item={item} title={title} url={url} />
             <div className={styles.ThanksPage__topgradient}></div>
             <div className={styles.ThanksPage__main}>
                 <div className={styles.ThanksPage__splash} style={splash}>
