@@ -5,6 +5,12 @@
 .DetailsPage {
     @include page();
 
+    &__entrylink {
+        @include fontsize($fontsize-small);
+        font-family: $fontstack-headings;
+        word-wrap: break-word;
+    }
+
     &__date {
         @include fontsize($fontsize-large);
         font-family: $fontstack-headings;

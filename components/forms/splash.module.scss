@@ -1,0 +1,33 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+
+.SplashCarousel {
+    margin: 1.0em 0;
+
+    &__instructions {
+        display: flex;
+        flex-direction: row;
+        padding: 0.5em 0;
+    }
+
+    &__info {
+        @include fontsize($fontsize-small);
+        font-family: $fontstack-headings;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+
+        button {
+            margin: 0 0.25em;
+        }
+    }
+
+    &__image {
+        background-position: center center;
+        background-size: cover;
+        height: 256px;
+    }
+}

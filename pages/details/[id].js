@@ -7,13 +7,14 @@ import Api from 'lib/api';
 import EntryEditor from 'components/forms/entryeditor';
 import PinnedSwitch from 'components/forms/pinnedswitch';
 import PublicSwitch from 'components/forms/publicswitch';
+import SplashCarousel from 'components/forms/splash';
 import ShareBox from 'components/sharebox';
 import Constants from 'lib/constants';
 
 import styles from './details.module.scss';
 
 
-const DetailsPage = (props) => {
+const DetailsPage = () => {
     const [session, loading] = useSession();
     if (!session && !loading) {
         signIn();
@@ -38,6 +39,15 @@ const DetailsPage = (props) => {
         );
     }
 
+    const entryLink = (
+        <p className={styles.DetailsPage__entrylink}>
+            Your entry is viewable at: &nbsp;
+            <a href={`/thanks/${item.author}/${item.id}`} target="_blank">
+                {`https://app.getthanky.com/thanks/${item.author}/${item.id}`}
+            </a>
+        </p>
+    );
+
     const day = dayjs(item.created).format(Constants.DATE_FORMAT_FULL);
 
     return (
@@ -53,8 +63,6 @@ const DetailsPage = (props) => {
                     onUpdate={(updated) => setItem(updated)}
                 />
 
-
-
                 <PinnedSwitch
                     item={item}
                     onUpdate={(updated) => {
@@ -68,7 +76,8 @@ const DetailsPage = (props) => {
                         setItem(updated);
                     }}
                 />
-
+                {item.isPublic && entryLink}
+                {item.isPublic && <SplashCarousel item={item} onUpdate={updated => setItem(updated)} />}
                 {item.isPublic && <ShareBox item={item} />}
             </main>
         </div>

@@ -48,7 +48,7 @@ const ThanksPage = ({ item, author }) => {
             </div>
             <div className={styles.ThanksPage__bottomgradient}></div>
             <div className={styles.ThanksPage__footer}>
-                <Footer />
+                <Footer item={item} />
             </div>
         </div>
     );

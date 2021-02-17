@@ -16,4 +16,8 @@
         color: $color-light;
         text-decoration: none;
     }
+
+    &__splash {
+        @include fontsize($fontsize-xs);
+    }
 }
