@@ -19,7 +19,7 @@ const Footer = ({ item }) => {
                 </p>
                 <p>
                     Start keeping your own gratitude journal
-                    at &nbsp;
+                    at&nbsp;
                     <Link href="https://www.getthanky.com">
                         <a>
                             www.getthanky.com
@@ -27,10 +27,10 @@ const Footer = ({ item }) => {
                     </Link>
                 </p>
                 <p className={styles.Footer__splash}>
-                    We're thankful for&nbsp;
-                    <a href={pictureInfo.bio} target="_blank">{pictureInfo.name}</a>&nbsp;
+                    We're thankful for
+                    <a href={pictureInfo.bio} target="_blank"> {pictureInfo.name} </a>
                     and the beautiful picture from
-                    &nbsp;<a href={pictureInfo.link} target="_blank">Unsplash</a>.
+                    <a href={pictureInfo.link} target="_blank"> Unsplash </a>.
                 </p>
             </div>
 

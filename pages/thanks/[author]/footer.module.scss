@@ -19,5 +19,7 @@
 
     &__splash {
         @include fontsize($fontsize-xs);
+        color: $color-gray-50;
+        margin-top: 2.0em;
     }
 }
