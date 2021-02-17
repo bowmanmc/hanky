@@ -71,7 +71,7 @@ const BoardPage = (props) => {
             </div>
 
             {randomItem && <div className={styles.BoardPage__random}>
-                    <Item item={randomItem} onUpdate={handleRandomUpdate} />
+                    <Item item={randomItem} onUpdate={handleRandomUpdate} showPinButton={true} />
                     <button onClick={() => {
                         if (randomIndex === (randomFeed.length - 1)) {
                             setRandomIndex(0);
@@ -100,7 +100,7 @@ const BoardPage = (props) => {
                         }
 
                         return (
-                            <Item key={item.id} item={item} onUpdate={handlePinnedUpdated} />
+                            <Item key={item.id} item={item} onUpdate={handlePinnedUpdated} showPinButton={true} />
                         );
                     })
                 }

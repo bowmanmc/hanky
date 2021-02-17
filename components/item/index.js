@@ -1,17 +1,22 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import { BsGearFill, BsHeart, BsHeartFill, BsLockFill, BsUnlock } from 'react-icons/bs';
+import {
+    BsGearFill,
+    BsHeart,
+    BsHeartFill,
+    BsLockFill,
+    BsUnlock,
+} from 'react-icons/bs';
 
 import Api from 'lib/api';
 import Constants from 'lib/constants';
 
 import styles from './index.module.scss';
 
-
 dayjs.extend(advancedFormat);
 
-const Item = ({item, onUpdate}) => {
+const Item = ({ item, onUpdate, showPinButton }) => {
     const day = dayjs(item.created).format(Constants.DATE_FORMAT_FULL);
 
     return (
@@ -22,20 +27,18 @@ const Item = ({item, onUpdate}) => {
                 <p className={styles.Item__text}>{item.entry}</p>
             </div>
             <div className={styles.Item__buttons}>
-                <button onClick={async () => {
-                    const updates = Object.assign({}, item, {isPublic: !item.isPublic});
-                    await Api.updateItem(updates);
-                    onUpdate(updates);
-                }}>
-                    {item.isPublic ? <BsUnlock /> : <BsLockFill />}
-                </button>
-                <button onClick={async () => {
-                    const updates = Object.assign({}, item, {isPinned: !item.isPinned});
-                    await Api.updateItem(updates);
-                    onUpdate(updates);
-                }}>
-                    {item.isPinned ? <BsHeartFill /> : <BsHeart />}
-                </button>
+                {showPinButton && (
+                    <button
+                        onClick={async () => {
+                            const updates = Object.assign({}, item, {
+                                isPinned: !item.isPinned,
+                            });
+                            await Api.updateItem(updates);
+                            onUpdate(updates);
+                        }}>
+                        {item.isPinned ? <BsHeartFill /> : <BsHeart />}
+                    </button>
+                )}
 
                 <Link href={`/details/${item.id}`}>
                     <a>
