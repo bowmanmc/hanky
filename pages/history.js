@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { signIn, useSession } from 'next-auth/client';
 
 import Api from 'lib/api';
-import Item from 'components/item';
+import History from 'components/history';
 
 import styles from './history.module.scss';
 
@@ -20,42 +20,30 @@ const HistoryPage = (props) => {
         });
     }, []);
 
+    // Format the data like
+    // {year: {month: [item, item...], month: []}, ...}
     let currentYear, currentMonth;
-    const render = [];
+    let history = {};
     for (let i = 0; i < feed.length; i++) {
         const item = feed[i];
         const year = dayjs(item.created).format('YYYY');
         const month = dayjs(item.created).format('MMMM');
         if (!currentYear || currentYear !== year) {
             currentYear = year;
-            render.push(
-                <div key={year} className={styles.HistoryPage__year}>
-                    {year}
-                </div>
-            );
+            history[currentYear] = {};
+            currentMonth = null;
         }
         if (!currentMonth || currentMonth !== month) {
             currentMonth = month;
-            render.push(
-                <div key={month} className={styles.HistoryPage__month}>
-                    {month}
-                </div>
-            );
+            history[currentYear][currentMonth] = [];
         }
-
-        render.push(
-            <Item
-                key={item.id}
-                item={item}
-                onUpdate={(updated) => {
-                    const newFeed = [...feed];
-                    newFeed[i] = updated;
-                    setFeed(newFeed);
-                }}
-            />
-        );
+        history[currentYear][currentMonth].push(item);
     }
 
-    return <div className={styles.HistoryPage}>{render}</div>;
+    return (
+        <div className={styles.HistoryPage}>
+            <History history={history} />
+        </div>
+    );
 };
 export default HistoryPage;

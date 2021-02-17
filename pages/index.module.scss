@@ -10,4 +10,12 @@
         font-family: $fontstack-headings;
         font-weight: $fontweight-bold;
     }
+
+    &__feed {
+        margin: 2.0em 0;
+    }
+
+    &__feeditem {
+        margin-bottom: 1.0em;
+    }
 }

@@ -1,4 +1,5 @@
 @import 'sass/colors';
+@import 'sass/devices';
 @import 'sass/page';
 @import 'sass/typography';
 
@@ -8,6 +9,7 @@
     &__title {
         @include fontsize($fontsize-large);
         font-family: $fontstack-headings;
+        text-align: center;
     }
 
     &__random {
@@ -17,8 +19,14 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 1.0em 0;
+        margin: 1.0em auto;
         padding: 1.0em;
+        margin-bottom: 2.0em;
+        max-width: 500px;
+
+        @include desktop {
+            padding: 1.0em 3.0em;
+        }
 
         button {
             align-items: center;
@@ -26,11 +34,26 @@
             border: none;
             display: flex;
             justify-content: center;
+            margin-top: 1.0em;
 
             svg {
                 margin-right: 0.25em;
             }
         }
+    }
+
+    &__pinned {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1em;
+
+        @include desktop {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__item {
     }
 
     &__tip {

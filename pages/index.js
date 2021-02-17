@@ -44,11 +44,13 @@ const HomePage = (props) => {
                 {
                     feed.map((item, index) => {
                         return (
-                            <Item key={item.id} item={item} onUpdate={updated => {
-                                const newFeed = [...feed];
-                                newFeed[index] = updated;
-                                setFeed(newFeed);
-                            }}/>
+                            <div className={styles.HomePage__feeditem} key={item.id}>
+                                <Item item={item} onUpdate={updated => {
+                                    const newFeed = [...feed];
+                                    newFeed[index] = updated;
+                                    setFeed(newFeed);
+                                }}/>
+                            </div>
                         );
                     })
                 }

@@ -4,17 +4,5 @@
 
 
 .HistoryPage {
-    @include page();
-
-    &__year {
-        @include fontsize($fontsize-xl);
-        font-family: $fontstack-headings;
-        font-style: italic;
-    }
-
-    &__month {
-        @include fontsize($fontsize-large);
-        font-family: $fontstack-headings;
-        font-style: italic;
-    }
+    padding: 1.0em;
 }
