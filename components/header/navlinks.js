@@ -1,10 +1,4 @@
 import Link from 'next/link';
-import {
-    BsHouseDoorFill,
-    BsBucketFill,
-    BsCalendarFill,
-    BsBrightnessAltHighFill,
-} from 'react-icons/bs';
 
 
 const NavLinks = () => {
@@ -13,7 +7,6 @@ const NavLinks = () => {
             <li>
                 <Link href="/">
                     <a>
-                        <BsHouseDoorFill />
                         <span>Home</span>
                     </a>
                 </Link>
@@ -21,7 +14,6 @@ const NavLinks = () => {
             <li>
                 <Link href="/board">
                     <a>
-                        <BsBrightnessAltHighFill />
                         <span>Board</span>
                     </a>
                 </Link>
@@ -29,7 +21,6 @@ const NavLinks = () => {
             <li>
                 <Link href="/history">
                     <a>
-                        <BsCalendarFill />
                         <span>History</span>
                     </a>
                 </Link>

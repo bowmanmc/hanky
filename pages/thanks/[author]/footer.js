@@ -8,7 +8,6 @@ import styles from './footer.module.scss';
 
 const Footer = ({ item }) => {
     const motivation = getMotivator();
-    const pictureInfo = getPictureInfo(item.splash);
 
     return (
         <div className={styles.Footer}>
@@ -28,9 +27,9 @@ const Footer = ({ item }) => {
                 </p>
                 <p className={styles.Footer__splash}>
                     We're thankful for
-                    <a href={pictureInfo.bio} target="_blank"> {pictureInfo.name} </a>
+                    <a href={item.splash.bio} target="_blank"> {item.splash.name} </a>
                     and the beautiful picture from
-                    <a href={pictureInfo.link} target="_blank"> Unsplash </a>.
+                    <a href={item.splash.link} target="_blank"> Unsplash </a>.
                 </p>
             </div>
 

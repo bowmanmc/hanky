@@ -1,6 +1,6 @@
 import Switch from 'react-switch';
 import Api from 'lib/api';
-import { BsLockFill, BsUnlock } from 'react-icons/bs';
+import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 
 import styles from './switch.module.scss';
 
@@ -20,7 +20,7 @@ const PublicSwitch = ({ item, onUpdate }) => {
                     checked={item.isPublic}
                 />
                 <div className={styles.Switch__icon}>
-                    {item.isPublic ? <BsUnlock /> : <BsLockFill />}
+                    {item.isPublic ? <BsEyeFill /> : <BsEyeSlashFill />}
                 </div>
             </label>
             <div className={styles.Switch__instructions}>

@@ -5,7 +5,6 @@ import Meta from './meta';
 import Footer from './footer';
 import Api from 'lib/api';
 import Constants from 'lib/constants';
-import { pictures } from 'lib/backgrounds';
 
 import styles from './thanks.module.scss';
 
@@ -14,9 +13,9 @@ dayjs.extend(advancedFormat);
 // This page takes in an id and an author and is the page
 // shared to social media.
 const ThanksPage = ({ item, author }) => {
-
+    console.log(item.splash);
     const splash = {
-        backgroundImage: `url(/images/backgrounds/${item.splash})`,
+        backgroundImage: `url(/images/backgrounds/${item.splash.image})`,
     };
 
     const day = dayjs(item.created).format(Constants.DATE_FORMAT_FULL);

@@ -1,17 +1,16 @@
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { useState } from 'react';
-import { BsCheckBox, BsPencilSquare } from 'react-icons/bs';
 
-import { pictures, getPictureInfo } from 'lib/backgrounds';
+import { pictures, getPictureIndex } from 'lib/backgrounds';
 
 import styles from './splash.module.scss';
 
 dayjs.extend(advancedFormat);
 
 const SplashCarousel = ({ item, onUpdate }) => {
-    const p = getPictureInfo(item.splash);
-    const [index, setIndex] = useState(p.index);
+    const i = getPictureIndex(item.splash.image);
+    const [index, setIndex] = useState(i);
 
     const splash = {
         backgroundImage: `url(/images/backgrounds/${pictures[index].image})`,

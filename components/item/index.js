@@ -5,8 +5,8 @@ import {
     BsGearFill,
     BsHeart,
     BsHeartFill,
-    BsLockFill,
-    BsUnlock,
+    BsFillEyeFill,
+    BsFillEyeSlashFill,
 } from 'react-icons/bs';
 
 import Api from 'lib/api';
@@ -27,6 +27,15 @@ const Item = ({ item, onUpdate, showPinButton }) => {
                 <p className={styles.Item__text}>{item.entry}</p>
             </div>
             <div className={styles.Item__buttons}>
+
+                <Link href={`/details/${item.id}`}>
+                    <a>
+                        {item.isPublic ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
+                    </a>
+                </Link>
+
+                <div className={styles.Item__spacer} />
+
                 {showPinButton && (
                     <button
                         onClick={async () => {
