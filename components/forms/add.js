@@ -36,7 +36,7 @@ const Form = (props) => {
                 <textarea
                     rows={7}
                     value={entry}
-                    placeholder={'Use the prompt above or do your own thing here. Gratitude in, Positivity out!'}
+                    placeholder={'Use the prompt above or do your own thing here. Keep it clean and remember, Gratitude in, Positivity out!'}
                     onChange={(event) => {
                         const text = event.target.value;
                         setEntry(text);
