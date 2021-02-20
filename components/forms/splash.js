@@ -17,7 +17,7 @@ const SplashCarousel = ({ item, onUpdate }) => {
     };
 
     const updateEntry = async (idx) => {
-        const updates = Object.assign({}, item, { splash: pictures[idx].image });
+        const updates = Object.assign({}, item, { splash: pictures[idx] });
         await fetch(`/api/entry/${item.id}`, {
             method: 'PUT',
             headers: {
