@@ -1,0 +1,10 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+.Warning {
+    @include fontsize($fontsize-small);
+
+    background: $color-white;
+    border-radius: 0.5em;
+    padding: 0.5em;
+}

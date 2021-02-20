@@ -2,6 +2,7 @@ import { getSession } from 'next-auth/client'
 
 import db from 'lib/db';
 import DataUtils from 'lib/datautils';
+import { checkEntry } from 'lib/abuse';
 
 
 // GET /api/entry/:id
@@ -25,9 +26,18 @@ const handleUpdate = async (request, response, sessionUser) => {
     const { body: { sk, id, entry, splash, isPinned, isPublic }} = request;
     // Generate pk from session user to prevent any funny business
     const pk = DataUtils.pk(sessionUser);
-    const params = DataUtils.updateEntryParams({pk, sk, id}, {entry, splash, isPinned, isPublic});
-    const results = await db.update(params);
-    response.json(results);
+
+    const checkResults = checkEntry(entry);
+    if (checkResults.banned) {
+        response.status(400).json({
+            error: 'Invalid entry parameter',
+        });
+    }
+    else {
+        const params = DataUtils.updateEntryParams({pk, sk, id}, {entry, splash, isPinned, isPublic});
+        const results = await db.update(params);
+        response.json(results);
+    }
 };
 
 // GET, UPDATE, & DELETE methods require a

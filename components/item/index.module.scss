@@ -15,6 +15,7 @@
     }
 
     &__entry {
+        flex: 1;
         padding: 0.5em;
 
         p {
@@ -65,7 +66,7 @@
     }
 
     &__date {
-        @include fontsize($fontsize-small);
+        @include fontsize($fontsize-xs);
         font-family: $fontstack-headings;
         font-style: italic;
     }

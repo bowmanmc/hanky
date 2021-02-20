@@ -3,6 +3,8 @@ import { getSession } from 'next-auth/client'
 import db from 'lib/db';
 import DataUtils from 'lib/datautils';
 import processEntry from 'lib/processEntry';
+import { checkEntry } from 'lib/abuse';
+
 
 // POST /api/entry
 export default async function handle(request, response) {
@@ -12,9 +14,12 @@ export default async function handle(request, response) {
     if (session) {
         const author = session.user.email;
         const { content, localtime } = request.body;
+
         const entry = processEntry(content);
+        const checkResults = checkEntry(entry);
+
         //console.log(`Entry "${entry}"`);
-        if (!entry || entry === '' || typeof localtime === 'undefined') {
+        if (!entry || entry === '' || typeof localtime === 'undefined' || checkResults.banned) {
             response.status(400).json({
                 error: 'Invalid entry parameter',
             });
