@@ -76,7 +76,7 @@ const BoardPage = (props) => {
                         onUpdate={handleRandomUpdate}
                         showPinButton={true}
                     />
-                    <button
+                    <button className={styles.BoardPage__randombtn}
                         onClick={() => {
                             if (randomIndex === randomFeed.length - 1) {
                                 setRandomIndex(0);
