@@ -1,0 +1,54 @@
+@import 'sass/colors';
+@import 'sass/typography';
+
+
+.Subscription {
+    background: $color-gray-90;
+    border-radius: 0.35em;
+    display: flex;
+    flex-direction: row;
+    padding: 1.0em;
+
+    &__icon {
+        align-items: center;
+        border-right: 1px solid $color-gray-75;
+        display: flex;
+        justify-content: center;
+        padding: 0 1.0em;
+
+        svg {
+            height: 48px;
+            width: 48px;
+        }
+    }
+
+    &__details {
+        border-left: 1px solid $color-white;
+        flex: 1;
+        padding: 0 1.0em;
+
+        button {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            margin: 1.0em 0;
+            padding: 0.5em;
+
+            svg {
+                margin-right: 0.5em;
+            }
+        }
+
+        h2 {
+            @include fontsize($fontsize-normal);
+            font-family: $fontstack-headings;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}

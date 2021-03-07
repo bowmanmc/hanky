@@ -42,6 +42,11 @@ const HistoryPage = (props) => {
 
     return (
         <div className={styles.HistoryPage}>
+            <p>
+                So far you've entered in {feed.length} things to be
+                thankful for, but there are countless
+                things to come!
+            </p>
             <History history={history} />
         </div>
     );

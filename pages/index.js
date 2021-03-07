@@ -24,7 +24,7 @@ const HomePage = (props) => {
         Api.todayFeed().then(items => {
             setFeed(items);
         });
-    }, [])
+    }, []);
 
     const day = dayjs().format('dddd, MMMM Do, YYYY');
 
