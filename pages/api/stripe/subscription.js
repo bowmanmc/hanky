@@ -31,16 +31,19 @@ export default async function handle(request, response) {
         const customers = await stripe.customers.list({
             email: session.user.email,
         });
-        const customer = customers.data[0]; // get the first one
-        const subscription = customer.subscriptions.data[0]; // first subscription?
+        const customer = customers?.data[0]; // get the first one
+        const subscription = customer?.subscriptions?.data[0]; // first subscription?
         //console.log('Subscription: ' + JSON.stringify(subscription, null, 4));
         // Only send back what is needed for display
-        const info = {
-            status: subscription?.status,
-            start: dayjs.unix(subscription['current_period_start']).format('YYYY-MM-DD'),
-            end: dayjs.unix(subscription['current_period_end']).format('YYYY-MM-DD'),
+        let info = {
+            status: subscription?.status || 'inactive',
         };
-
+        if (subscription && subscription['current_period_start']) {
+            info.start = dayjs.unix(subscription['current_period_start']).format('YYYY-MM-DD');
+        }
+        if (subscription && subscription['current_period_end']) {
+            info.end = dayjs.unix(subscription['current_period_end']).format('YYYY-MM-DD');
+        }
         response.status(200).json(info);
     }
     catch (err) {

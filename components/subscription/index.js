@@ -1,32 +1,35 @@
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { FaStripe } from 'react-icons/fa';
-import { GrStripe } from 'react-icons/gr';
-import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react';
 
 import Api from 'lib/api';
-import Constants from 'lib/constants';
+
+import Details from './details';
+import Subscribe from './subscribe';
 
 import styles from './index.module.scss';
 
 
-dayjs.extend(advancedFormat);
 
-const Subscription = ({ subscription }) => {
-    const router = useRouter();
+const Subscription = () => {
 
-    const date = dayjs(subscription.end).format(Constants.DATE_FORMAT_DAY);
+    const [subscriptionInfo, setSubscriptionInfo] = useState({});
 
-    const go2stripe = async (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        Api.subscriptionInfo().then(info => {
+            setSubscriptionInfo(info);
+        });
+    }, []);
 
-        const session = await Api.stripePortal();
-        if (session.statusCode === 500) {
-            console.error(session.message);
-            return;
-        }
-        router.push(session.url);
-    };
+    let details = (
+        <p>loading...</p>
+    );
+
+    if (subscriptionInfo && subscriptionInfo.end) {
+        details = <Details info={subscriptionInfo} />;
+    }
+    else {
+        details = <Subscribe />;
+    }
 
     return (
         <div className={styles.Subscription}>
@@ -34,14 +37,7 @@ const Subscription = ({ subscription }) => {
                 <FaStripe />
             </div>
             <div className={styles.Subscription__details}>
-                <h2>Subscription Details</h2>
-                <p>
-                    Your subscription ends on <br />
-                    {date}
-                </p>
-                <button onClick={go2stripe}>
-                    <GrStripe /> Manage your subscription
-                </button>
+                {details}
             </div>
         </div>
     );
