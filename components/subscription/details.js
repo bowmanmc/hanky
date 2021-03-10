@@ -6,8 +6,6 @@ import { useRouter } from 'next/router'
 import Api from 'lib/api';
 import Constants from 'lib/constants';
 
-import styles from './index.module.scss';
-
 
 dayjs.extend(advancedFormat);
 

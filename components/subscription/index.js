@@ -24,10 +24,10 @@ const Subscription = () => {
         <p>loading...</p>
     );
 
-    if (subscriptionInfo && subscriptionInfo.end) {
+    if (subscriptionInfo?.status && subscriptionInfo.end) {
         details = <Details info={subscriptionInfo} />;
     }
-    else {
+    else if (subscriptionInfo?.status && subscriptionInfo?.status !== 'active') {
         details = <Subscribe />;
     }
 

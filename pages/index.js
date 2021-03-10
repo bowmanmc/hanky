@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { useEffect, useState } from 'react';
 import { signIn, useSession } from 'next-auth/client';
+import { useRouter } from 'next/router'
 
 import Api from 'lib/api';
 import Item from 'components/item';
@@ -14,19 +15,29 @@ import styles from './index.module.scss';
 dayjs.extend(advancedFormat);
 
 const HomePage = (props) => {
+    const router = useRouter();
+
     const [session, loading] = useSession();
     if (!session && !loading) {
         signIn();
     }
 
     const [feed, setFeed] = useState([]);
+    const [subscription, setSubscription] = useState(null);
     useEffect(() => {
         Api.todayFeed().then(items => {
             setFeed(items);
         });
+        Api.subscriptionInfo().then(info => {
+            setSubscription(info);
+        });
     }, []);
 
     const day = dayjs().format('dddd, MMMM Do, YYYY');
+
+    if (subscription && subscription.status !== 'active') {
+        router.push('/account');
+    }
 
     const name = session?.user?.name;
     return (

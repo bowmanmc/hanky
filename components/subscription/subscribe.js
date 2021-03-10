@@ -3,9 +3,10 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { GrStripe } from 'react-icons/gr';
 
 import Api from 'lib/api';
-
+import { getStripe } from 'lib/stripe';
 
 dayjs.extend(advancedFormat);
+
 
 const Subscribe = () => {
 
@@ -33,7 +34,7 @@ const Subscribe = () => {
         <>
             <p>
                 To continue, please purchase a subscription.
-                Guaranteed to make you a happier person!
+                It's guaranteed to make you a happier person! 😁
             </p>
             <button onClick={go2subscribe}>
                 <GrStripe /> Subscribe Now
