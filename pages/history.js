@@ -45,7 +45,7 @@ const HistoryPage = (props) => {
             <p>
                 So far you've entered in {feed.length} things to be
                 thankful for, but there are countless
-                things to come!
+                things to come! Keep it up!
             </p>
             <History history={history} />
         </div>

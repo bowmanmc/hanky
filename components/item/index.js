@@ -30,7 +30,7 @@ const Item = ({ item, onUpdate, showPinButton }) => {
 
                 <Link href={`/details/${item.id}`}>
                     <a>
-                        {item.isPublic ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
+                        {item.isPublic ? <BsFillEyeFill /> : null}
                     </a>
                 </Link>
 
