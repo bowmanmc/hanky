@@ -21,11 +21,11 @@ const Meta = ({ title, url, item }) => {
             <meta property="twitter:title" content={title} />
             <meta property="og:url" content={url} />
             <meta property="twitter:url" content={url} />
-            <meta property="og:description" content={item.entry} />
-            <meta name="description" content={item.entry} />
-            <meta property="twitter:description" content={item.entry} />
-            <meta property="og:image" content={`https://app.getthanky.com/images/backgrounds/${item.splash}`} />
-            <meta name="twitter:image" content={`https://app.getthanky.com/images/backgrounds/${item.splash}`} />
+            <meta property="og:description" content={item?.entry} />
+            <meta name="description" content={item?.entry} />
+            <meta property="twitter:description" content={item?.entry} />
+            <meta property="og:image" content={`https://app.getthanky.com/images/backgrounds/${item?.splash}`} />
+            <meta name="twitter:image" content={`https://app.getthanky.com/images/backgrounds/${item?.splash}`} />
             <meta name="twitter:image:alt" content={title} />
             <meta name="twitter:card" content="summary_large_image" />
 

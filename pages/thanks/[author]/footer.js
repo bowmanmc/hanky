@@ -27,9 +27,9 @@ const Footer = ({ item }) => {
                 </p>
                 <p className={styles.Footer__splash}>
                     We're thankful for
-                    <a href={item.splash.bio} target="_blank"> {item.splash.name} </a>
+                    <a href={item?.splash?.bio} target="_blank"> {item?.splash?.name} </a>
                     and the beautiful picture from
-                    <a href={item.splash.link} target="_blank"> Unsplash </a>.
+                    <a href={item?.splash?.link} target="_blank"> Unsplash </a>.
                 </p>
             </div>
 
